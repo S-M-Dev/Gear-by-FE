@@ -146,6 +146,7 @@
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
+      cursor: pointer;
 
       &__description {
         flex: 1;

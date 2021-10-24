@@ -8,10 +8,12 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { CatalogRoutingModule } from './catalog-routing.module';
 import { CatalogPageComponent } from './pages/catalog-page/catalog-page.component';
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
+import { ItemModalComponent } from './components/item-modal/item-modal.component';
 
 const MATERIAL_MODULES = [
   MatInputModule,
@@ -21,12 +23,14 @@ const MATERIAL_MODULES = [
   MatCardModule,
   MatExpansionModule,
   MatSliderModule,
+  MatDialogModule,
 ];
 
 @NgModule({
   declarations: [
     CatalogPageComponent,
-    CartPageComponent
+    CartPageComponent,
+    ItemModalComponent
   ],
   imports: [
     CommonModule,

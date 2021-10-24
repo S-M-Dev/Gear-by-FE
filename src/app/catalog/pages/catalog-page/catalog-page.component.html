@@ -51,7 +51,7 @@
         </div>
       </div>
       <div class="goods-list__results">
-        <mat-card class="goods-list__results__item" *ngFor="let item of array" >
+        <mat-card class="goods-list__results__item" (click)="openItemModal()" *ngFor="let item of array">
           <img src="assets/part.png">
           <div class="goods-list__results__item__description">
             <div class="goods-list__results__item__description__col goods-list__results__item__description__col--left">

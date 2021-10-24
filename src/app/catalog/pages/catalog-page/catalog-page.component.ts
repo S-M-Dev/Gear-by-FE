@@ -1,6 +1,8 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ViewportScroller } from '@angular/common';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { MatDialog } from '@angular/material/dialog';
+import { ItemModalComponent } from '../../components/item-modal/item-modal.component';
 
 @Component({
   selector: 'gear-by-catalog-page',
@@ -20,7 +22,7 @@ export class CatalogPageComponent implements OnInit {
 
   private _mobileQueryListener: () => void;
 
-  constructor(private scroller: ViewportScroller, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+  constructor(private scroller: ViewportScroller, public dialog: MatDialog, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -38,6 +40,10 @@ export class CatalogPageComponent implements OnInit {
 
   scrollToGoods() {
     this.scroller.scrollToAnchor('goods');
+  }
+
+  openItemModal() {
+    const dialogRef = this.dialog.open(ItemModalComponent);
   }
 
 }
