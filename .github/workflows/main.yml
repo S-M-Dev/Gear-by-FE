@@ -1,0 +1,20 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install dependencies 
+      run: |
+        npm install
+    - name: Build and Deploy
+      run: |
+        export FIREBASE_TOKEN=1//0c94ePsfOtiNKCgYIARAAGAwSNwF-L9Irkod4HkGtdHq-QUHYmk53w-G7cUaSDwiNEdFL2h6uYTfOcRQEIEO9gtoXS0aioNKIVjg && npm run deploy
