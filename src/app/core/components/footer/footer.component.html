@@ -1,0 +1,39 @@
+<footer class="footerContainer">
+  <div class="footerSocial">
+    <ul class="ulSocial">
+      <li *ngFor="let link of socialLinks">
+        <a [attr.href]="link.href" target="_blank"
+          ><img
+            [src]="'assets/' + link.name + '.svg'"
+            [attr.alt]="link.name"
+            class="imgIcons"
+        /></a>
+      </li>
+    </ul>
+  </div>
+  <div class="footerLogo">
+    <div class="footerLogoContainer">
+      <a routerLink="/"
+        ><img src="assets/logo.svg" alt="logo" class="footerLogoSMD"
+      /></a>
+      <a routerLink="/">
+        <h3 class="footerTextLogo">Gear</h3>
+      </a>
+    </div>
+    <div class="connectionBlock">
+      <div class="phone">
+        <a href="tel:+375335555555"
+          ><img src="assets/phone.svg" alt="phone" class="imgIcons"
+        /></a>
+        <a href="tel:+375445555555" class="phoneLink">+375 44 555 55 55</a>
+      </div>
+      <div class="gmail">
+        <a href="mailto:smdev@gmail.com"
+          ><img src="assets/mail.svg" alt="email" class="imgIcons"
+        /></a>
+        <a href="mailto:smdev@gmail.com" class="gmailLink">gear@gmail.com</a>
+      </div>
+    </div>
+  </div>
+  <span class="copyright">© Авторские права. 2021 SMDev.Gear.Все права защищены</span>
+</footer>

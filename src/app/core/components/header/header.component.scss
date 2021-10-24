@@ -1,0 +1,56 @@
+mat-toolbar {
+  height: 130px;
+  justify-content: space-between;
+  background: linear-gradient(90deg, #191717 0%, #131010 22.92%, #FA4A4A 67.19%, #F43C3C 100%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  .brand {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    margin-left: 28px;
+
+    &__logo {
+      img {
+        width: 70px;
+      }
+    }
+
+    &__name {
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 60px;
+      line-height: 70px;
+      margin-left: 46px;
+      text-decoration: none;
+      color: #F92A2A;
+    }
+  }
+
+  .search-form {
+    width: 1076px;
+  }
+
+  .controls {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    a {
+      width: 80px;
+      height: 80px;
+      line-height: 80px;
+      font-size: 80px;
+      margin-right: 20px;
+
+      mat-icon {
+        width: 70px;
+        height: 70px;
+        line-height: 70px;
+        font-size: 70px
+      };
+    }
+  }
+}

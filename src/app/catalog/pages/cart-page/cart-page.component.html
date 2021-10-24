@@ -1,0 +1,70 @@
+<section>
+  <mat-drawer-container>
+    <mat-drawer-content>
+      <h2>Корзина</h2>
+      <mat-card class="cart-item" *ngFor="let item of [1,2]">
+        <img class="cart-item__image" src="assets/part.png">
+        <div class="cart-item__description">
+          <h3 class="cart-item__description__title">Подвеска</h3>
+          <div class="cart-item__description__text">
+            <span>Марка: Audi</span>
+            <span>Модель: A6</span>
+            <span>Цвет: серый</span>
+          </div>
+        </div>
+        <div class="cart-item__counter">
+          <button mat-icon-button>
+            <mat-icon>remove</mat-icon>
+          </button>
+          <span>1</span>
+          <button mat-icon-button>
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+        <div class="cart-item__price">
+          500p
+        </div>
+        <button mat-icon-button class="cart-item__delete">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-card>
+    </mat-drawer-content>
+    <mat-drawer position="end" mode="side" opened>
+      <mat-card class="cart-total">
+        <div class="cart-total__title">
+          <h3>Итого</h3>
+          <span>1000p</span>
+        </div>
+        <div class="cart-total__amount">
+          <span>Товары: 2шт</span>
+          <span>1000р</span>
+        </div>
+        <form class="cart-total__order-form">
+          <mat-form-field appearance="fill">
+            <mat-label>Дата</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Имя</mat-label>
+            <input matInput>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Адрес</mat-label>
+            <input matInput>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Телефон</mat-label>
+            <input matInput>
+          </mat-form-field>
+
+          <button mat-button type="submit">Оформить заказ</button>
+        </form>
+      </mat-card>
+    </mat-drawer>
+  </mat-drawer-container>
+</section>

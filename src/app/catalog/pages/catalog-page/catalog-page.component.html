@@ -1,0 +1,73 @@
+<section class="brand-banner">
+  <div class="brand-banner__left">
+    <h1>Магазин автозапчастей</h1>
+    <button mat-button (click)="scrollToGoods()">В каталог</button>
+  </div>
+  <div class="brand-banner__right">
+    <img src="assets/car.png">
+  </div>
+</section>
+<section class="goods-list" id="goods">
+  <mat-drawer-container>
+    <mat-drawer mode="side" opened>
+      <h2>
+        <mat-icon>filter_list</mat-icon>
+        Фильтр
+      </h2>
+      <mat-expansion-panel *ngFor="let category of goodsCategories">
+        <mat-expansion-panel-header class="filter-header">
+          <mat-panel-title>
+            {{ category }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="filter-content">
+          <button class="filter-content__item" mat-button *ngFor="let item of [1,2,3,4,5]">
+            <span class="filter-content__item__name">
+              <span>Туц</span>
+              <mat-icon>arrow_right</mat-icon>
+            </span>
+          </button>
+        </div>
+      </mat-expansion-panel>
+
+      <mat-card class="filter-header">Цена</mat-card>
+
+      <mat-slider
+        thumbLabel
+        [displayWith]="formatLabel"
+        tickInterval="50"
+        step="100"
+        max="100000"
+        aria-label="units">
+      </mat-slider>
+    </mat-drawer>
+    <mat-drawer-content>
+      <div class="goods-list__header">
+        <h2>Наш товар</h2>
+        <div class="goods-list__header__sort">
+          <span class="goods-list__header__sort__title">Сортировка по:</span>
+          <button mat-button>Популярности</button>
+          <button mat-button>Цене</button>
+        </div>
+      </div>
+      <div class="goods-list__results">
+        <mat-card class="goods-list__results__item" (click)="openItemModal()" *ngFor="let item of array">
+          <img src="assets/part.png">
+          <div class="goods-list__results__item__description">
+            <div class="goods-list__results__item__description__col goods-list__results__item__description__col--left">
+              <span>Подвеска</span>
+              <span>500р</span>
+            </div>
+            <div class="goods-list__results__item__description__col goods-list__results__item__description__col--right">
+              <span>Audi A6</span>
+              <span>(300)</span>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+      <button mat-fab (click)="scrollToGoods()">
+        <mat-icon>arrow_upward</mat-icon>
+      </button>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</section>
