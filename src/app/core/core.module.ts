@@ -4,6 +4,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { AngularFireModule } from '@angular/fire/compat';
+
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
@@ -17,6 +19,7 @@ import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.com
 
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { environment } from 'src/environments/environment';
 
 const MATERIAL_MODULES = [
   MatCardModule,
@@ -41,6 +44,7 @@ const PAGES = [
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
     ...MATERIAL_MODULES,
   ],
   providers: [

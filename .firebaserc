@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "gear-by": {
+      "hosting": {
+        "Gear-by-FE": [
+          "gear-by"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "gear-by"
+  }
+}
