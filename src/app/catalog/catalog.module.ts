@@ -9,6 +9,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 import { CatalogRoutingModule } from './catalog-routing.module';
 import { CatalogPageComponent } from './pages/catalog-page/catalog-page.component';
@@ -24,6 +26,8 @@ const MATERIAL_MODULES = [
   MatExpansionModule,
   MatSliderModule,
   MatDialogModule,
+  MatDatepickerModule,
+  MatMomentDateModule
 ];
 
 @NgModule({
