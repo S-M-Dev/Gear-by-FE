@@ -8,6 +8,7 @@ mat-toolbar {
     flex: 1;
     display: flex;
     align-items: center;
+    margin-left: 28px;
 
     &__logo {
       img {
@@ -16,6 +17,11 @@ mat-toolbar {
     }
 
     &__name {
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 60px;
+      line-height: 70px;
       margin-left: 46px;
       text-decoration: none;
       color: #F92A2A;
@@ -31,5 +37,20 @@ mat-toolbar {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    a {
+      width: 80px;
+      height: 80px;
+      line-height: 80px;
+      font-size: 80px;
+      margin-right: 20px;
+
+      mat-icon {
+        width: 70px;
+        height: 70px;
+        line-height: 70px;
+        font-size: 70px
+      };
+    }
   }
 }

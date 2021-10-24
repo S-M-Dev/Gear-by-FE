@@ -4,7 +4,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
-import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
 import { AuthRoutingModule } from './auth-routing.module';
@@ -14,7 +13,6 @@ import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component
 const MATERIAL_MODULES = [
   MatCardModule,
   MatInputModule,
-  MatIconModule,
   MatButtonModule,
 ]
 

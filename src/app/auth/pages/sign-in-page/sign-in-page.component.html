@@ -1,19 +1,21 @@
-<mat-card>
-  <img class="form-logo" src="assets/logo-wo-outline.svg">
-  <form autocomplete="off" [formGroup]="loginForm" (submit)="loginForm.valid && login()">
-    <mat-form-field>
-      <mat-label>Электронаня почта</mat-label>
-      <input matInput formControlName="email" name="email">
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Пароль</mat-label>
-      <input type="password" matInput formControlName="password" name="password">
-    </mat-form-field>
-    <button type="submit" mat-raised-button>
-      <span>Войти</span>
-    </button>
-  </form>
+<section>
+  <mat-card>
+    <img class="form-logo" src="assets/logo-wo-outline.svg">
+    <form autocomplete="off" [formGroup]="loginForm" (submit)="loginForm.valid && login()">
+      <mat-form-field>
+        <mat-label>Электронаня почта</mat-label>
+        <input matInput formControlName="email" name="email">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Пароль</mat-label>
+        <input type="password" matInput formControlName="password" name="password">
+      </mat-form-field>
+      <button type="submit" mat-raised-button>
+        <span>Войти</span>
+      </button>
+    </form>
 
-  <a mat-button routerLink="/auth/sign-up">Зарегистрироваться</a>
-  <a mat-button>Забыли пароль?</a>
-</mat-card>
+    <a mat-button routerLink="/auth/sign-up">Зарегистрироваться</a>
+    <a mat-button>Забыли пароль?</a>
+  </mat-card>
+</section>
