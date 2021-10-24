@@ -1,0 +1,28 @@
+mat-toolbar {
+  height: 130px;
+  justify-content: space-between;
+  background: linear-gradient(90deg, #191717 0%, #131010 22.92%, #FA4A4A 67.19%, #F43C3C 100%);
+
+  .brand {
+    flex: 1;
+    display: flex;
+    align-items: center;
+
+    &__name {
+      margin-left: 46px;
+      text-decoration: none;
+      color: #F92A2A;
+    }
+  }
+
+  .search-form {
+    width: 1076px;
+  }
+
+  .controls {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

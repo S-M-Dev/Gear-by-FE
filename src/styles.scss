@@ -37,3 +37,20 @@ $Gear-by-FE-theme: mat.define-light-theme((
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+mat-form-field {
+  width: 100%;
+
+  .mat-form-field-wrapper {
+    margin-bottom: -1.25em;
+
+    .mat-form-field-flex {
+      background-color: white !important;
+      border-radius: 10px;
+    }
+
+    .mat-form-field-underline {
+      overflow: hidden;
+    }
+  }
+}

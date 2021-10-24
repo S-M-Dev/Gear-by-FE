@@ -1,0 +1,91 @@
+:host {
+  color: #FF0000;
+}
+
+a {
+  color: #FF0000;
+  text-decoration: none;
+}
+
+.imgIcons {
+  width: 75px;
+  height: 75px;
+}
+
+.footerContainer {
+  background-color: #191717;
+  height: 500px;
+
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.ulSocial {
+  display: flex;
+  list-style: none;
+}
+
+.ulSocial li {
+  padding-left: 100px;
+}
+
+.ulSocial li:first-child {
+  padding-left: 0px;
+}
+
+.footerLogo {
+  display: flex;
+}
+
+.footerLogoContainer {
+  display: flex;
+  margin-right: 200px;
+  align-items: center;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.footerTextLogo {
+  padding-left: 20px;
+  font-size: 28px;
+  text-decoration: none;
+}
+
+.footerLogoSMD {
+  height: 100px;
+  width: 100px;
+}
+
+.connectionBlock {
+  display: block;
+}
+
+.phone {
+  display: flex;
+  align-items: center;
+}
+
+.phoneLink {
+  font-weight: normal;
+  font-size: 18px;
+  padding-left: 25px;
+}
+
+.gmail {
+  display: flex;
+  align-items: center;
+}
+
+.gmailLink {
+  font-weight: normal;
+  font-size: 18px;
+  padding-left: 25px;
+}
+
+.copyright {
+  font-weight: normal;
+}

@@ -15,7 +15,7 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "gear-by",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
