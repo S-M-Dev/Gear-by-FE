@@ -17,6 +17,8 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.userInfoService.fetchUserInfo().subscribe();
+    if (this.userInfoService.getToken()) {
+      this.userInfoService.fetchUserInfo().subscribe();
+    }
   }
 }

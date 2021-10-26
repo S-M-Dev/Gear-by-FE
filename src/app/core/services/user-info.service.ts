@@ -34,6 +34,6 @@ export class UserInfoService {
   }
 
   clearUserData() {
-    localStorage.removeItem('token');
+    localStorage.removeItem('userToken');
   }
 }
