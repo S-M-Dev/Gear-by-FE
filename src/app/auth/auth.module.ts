@@ -7,6 +7,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 
 import { AuthRoutingModule } from './auth-routing.module';
+
+import { AuthService } from './services/auth.service';
+
 import { SignInPageComponent } from './pages/sign-in-page/sign-in-page.component';
 import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component';
 
@@ -24,5 +27,8 @@ const MATERIAL_MODULES = [
     ReactiveFormsModule,
     ...MATERIAL_MODULES
   ],
+  providers: [
+    AuthService,
+  ]
 })
 export class AuthModule {}
