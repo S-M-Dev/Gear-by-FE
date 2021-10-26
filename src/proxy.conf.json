@@ -1,0 +1,8 @@
+{
+  "/api": {
+    "target": "https://gear-by-be.herokuapp.com/",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}
