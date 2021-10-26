@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:8080',
+  apiUrl: 'https://gear-by-be.herokuapp.com/api/',
   firebase: {
     apiKey: 'AIzaSyC365OqBIxPcO4b0rTOyhkbwAAO2P9U28E',
     authDomain: 'gear-by.firebaseapp.com',
