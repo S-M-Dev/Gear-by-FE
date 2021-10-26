@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, ReplaySubject, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { User } from '../models/user.model';
 
@@ -9,22 +9,13 @@ import { User } from '../models/user.model';
 })
 export class UserInfoService {
   private apiUrl = 'user';
-  private readonly userInfo$: BehaviorSubject<User | null>;
+  private readonly userInfo$ = new Subject<User>();
 
-  constructor(private http: HttpClient) {
-    const storedUserData = localStorage.getItem('userInfo');
-
-    this.userInfo$ = new BehaviorSubject(
-      storedUserData
-        ? JSON.parse(storedUserData)
-        : null
-    );
-  }
+  constructor(private http: HttpClient) {}
 
   fetchUserInfo() {
     return this.http.get<User>(this.apiUrl).pipe(
       tap((userInfo) => {
-        localStorage.setItem('userInfo', JSON.stringify(userInfo));
         this.userInfo$.next(userInfo);
       })
     );
@@ -43,6 +34,6 @@ export class UserInfoService {
   }
 
   clearUserData() {
-    this.userInfo$.next(null);
+    localStorage.removeItem('token');
   }
 }
