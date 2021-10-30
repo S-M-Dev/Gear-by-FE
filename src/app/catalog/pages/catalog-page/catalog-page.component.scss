@@ -1,10 +1,12 @@
 .brand-banner {
   display: flex;
-  height: 950px;
+  justify-content: space-around;
+  align-items: center;
+  height: 1010px;
   color: white;
 
   &__left {
-    flex: 1;
+    width: 490px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -13,29 +15,32 @@
     h1 {
       font-style: normal;
       font-weight: 900;
-      font-size: 90px;
-      line-height: 105px;
-      margin-bottom: 125px;
+      font-size: 65px;
+      line-height: 76px;
+      margin-bottom: 80px;
       text-align: center;
     }
 
     button {
-      width: 534px;
-      height: 91px;
+      width: 293px;
+      height: 54px;
       background: #E70F0F;
       border-radius: 10px;
       font-family: Roboto;
       font-style: normal;
       font-weight: 300;
-      font-size: 60px;
+      font-size: 35px;
     }
   }
 
   &__right {
-    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    img {
+      width: 729px;
+    }
   }
 }
 
