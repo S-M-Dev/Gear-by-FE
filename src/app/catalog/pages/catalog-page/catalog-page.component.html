@@ -10,10 +10,12 @@
 <section class="goods-list" id="goods">
   <mat-drawer-container>
     <mat-drawer mode="side" opened>
-      <h2>
+      <div class="filter-title">
         <mat-icon>filter_list</mat-icon>
-        Фильтр
-      </h2>
+        <h2>
+          Фильтр
+        </h2>
+      </div>
       <mat-expansion-panel *ngFor="let category of goodsCategories">
         <mat-expansion-panel-header class="filter-header">
           <mat-panel-title>
@@ -52,7 +54,7 @@
       </div>
       <div class="goods-list__results">
         <mat-card class="goods-list__results__item" (click)="openItemModal()" *ngFor="let item of array">
-          <img src="assets/part.png">
+          <img class="goods-list__results__item__image" src="assets/part.png">
           <div class="goods-list__results__item__description">
             <div class="goods-list__results__item__description__col goods-list__results__item__description__col--left">
               <span>Подвеска</span>

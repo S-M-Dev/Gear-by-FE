@@ -1,10 +1,12 @@
 .brand-banner {
   display: flex;
-  height: 950px;
+  justify-content: space-around;
+  align-items: center;
+  height: 1010px;
   color: white;
 
   &__left {
-    flex: 1;
+    width: 490px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -13,140 +15,190 @@
     h1 {
       font-style: normal;
       font-weight: 900;
-      font-size: 90px;
-      line-height: 105px;
-      margin-bottom: 125px;
+      font-size: 65px;
+      line-height: 76px;
+      margin-bottom: 80px;
       text-align: center;
     }
 
     button {
-      width: 534px;
-      height: 91px;
-      background: #E70F0F;
+      width: 293px;
+      height: 54px;
+      background: #e70f0f;
       border-radius: 10px;
       font-family: Roboto;
       font-style: normal;
       font-weight: 300;
-      font-size: 60px;
+      font-size: 35px;
     }
   }
 
   &__right {
-    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    img {
+      width: 729px;
+    }
   }
 }
 
 .goods-list {
   background: white;
 
-  h2 {
-    font-size: 30px;
-
-    mat-icon {
-      font-size: 25px;
-    }
-  }
-
   mat-drawer {
-    width: 300px;
+    width: 277px;
     padding: 20px;
-    border-right: 3px solid #FF0000;
+    border-right: 3px solid #ff0000;
     box-shadow: 0px 4px 10px rgba(249, 25, 25, 0.94);
-  }
 
-  mat-expansion-panel, mat-card {
-    margin-top: 90px;
-    box-shadow: unset;
-  }
+    mat-expansion-panel,
+    mat-card {
+      margin-top: 42px;
+      box-shadow: unset;
 
-  .filter-header {
-    background: #F92A2A;
-    color: white;
-    font-size: 20px;
-    padding: 0 24px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-
-    &:hover {
-      background: #F92A2A !important;
+      ::ng-deep {
+        .mat-expansion-panel-body {
+          padding: 0 10px;
+        }
+      }
     }
 
-    &.mat-expanded {
-      height: 48px;
+    .filter-title {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+
+      h2 {
+        font-size: 40px;
+        margin-bottom: 0;
+      }
+
+      mat-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 40px;
+      }
     }
 
-    mat-panel-title {
+    .filter-header {
+      background: #f92a2a;
       color: white;
-    }
+      font-size: 26px;
+      line-height: 30px;
+      font-weight: bold;
+      padding: 0 11px;
+      height: 48px;
+      display: flex;
+      align-items: center;
 
-    ::ng-deep {
-      .mat-expansion-indicator::after {
-        color: white !important;
+      &:hover {
+        background: #f92a2a !important;
+      }
+
+      &.mat-expanded {
+        height: 48px;
+      }
+
+      mat-panel-title {
+        color: white;
+      }
+
+      ::ng-deep {
+        .mat-expansion-indicator::after {
+          color: white;
+          border-width: 0px 4px 4px 0px;
+          padding: 4px;
+        }
       }
     }
-  }
 
-  .filter-content {
-    display: flex;
-    flex-direction: column;
-    border-left: 2px solid #F92A2A;
+    .filter-content {
+      display: flex;
+      flex-direction: column;
+      border-left: 2px solid #f92a2a;
+      padding-top: 20px;
 
-    &__item {
-      text-align: left;
+      &__item {
+        text-align: left;
 
-      border-bottom: 2px solid #F92A2A;
-      border-radius: 0;
+        border-bottom: 2px solid #f92a2a;
+        border-radius: 0;
 
-      color: #F92A2A;
+        color: #f92a2a;
 
-      padding: 0;
+        padding: 0;
 
-      &__name {
-        padding-left: 5px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        &__name {
+          padding-left: 5px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          font-size: 20px;
+          font-weight: bold;
+
+          mat-icon {
+            width: 25px;
+            height: 25px;
+            font-size: 25px;
+          }
+        }
       }
     }
-  }
 
-  mat-slider {
-    width: 100%;
+    mat-slider {
+      width: 100%;
+    }
   }
 
   &__header {
     display: flex;
     justify-content: space-between;
-    padding: 35px 35px 0 35px;
+    padding: 35px 98px 0 98px;
+
+    h2 {
+      font-size: 40px;
+      margin-bottom: 0;
+    }
 
     &__sort {
+      font-size: 28px;
+
+      button {
+        font-size: 28px;
+        font-weight: normal;
+      }
+
       &__title {
         text-decoration: underline;
         font-weight: 300;
+        margin-right: 69px;
       }
     }
   }
 
   &__results {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
+    padding: 48px 98px 0 98px;
 
     &__item {
       border: 3px solid rgba(249, 25, 25, 0.94);
       border-radius: 10px;
-      width: 250px;
-      height: 250px;
-      margin: 20px;
-      padding: 20px;
+      width: 295px;
+      height: 322px;
+      margin-bottom: 68px;
+      padding: 16px;
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
       cursor: pointer;
+
+      &__image {
+        width: 257px;
+      }
 
       &__description {
         flex: 1;
@@ -156,10 +208,15 @@
         &__col {
           display: flex;
           flex-direction: column;
-          justify-content: space-between;
+          justify-content: space-around;
 
           &--left {
             font-weight: bold;
+            font-size: 20px;
+          }
+
+          &--right {
+            font-size: 17px;
           }
         }
       }
@@ -169,6 +226,6 @@
   button[mat-fab] {
     float: right;
     margin: 15px;
-    background: #F92A2A;
+    background: #f92a2a;
   }
 }

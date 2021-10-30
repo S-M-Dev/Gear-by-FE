@@ -1,5 +1,5 @@
 mat-toolbar {
-  height: 130px;
+  height: 70px;
   justify-content: space-between;
   background: linear-gradient(90deg, #191717 0%, #131010 22.92%, #FA4A4A 67.19%, #F43C3C 100%);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -12,7 +12,7 @@ mat-toolbar {
 
     &__logo {
       img {
-        width: 70px;
+        width: 40px;
       }
     }
 
@@ -20,7 +20,7 @@ mat-toolbar {
       font-family: Roboto;
       font-style: normal;
       font-weight: 500;
-      font-size: 60px;
+      font-size: 40px;
       line-height: 70px;
       margin-left: 46px;
       text-decoration: none;
@@ -30,6 +30,18 @@ mat-toolbar {
 
   .search-form {
     width: 1076px;
+
+    mat-form-field {
+      ::ng-deep {
+        .mat-form-field-flex {
+          padding-left: 16px;
+        }
+
+        .mat-form-field-underline {
+          display: none;
+        }
+      }
+    }
   }
 
   .controls {
@@ -39,17 +51,13 @@ mat-toolbar {
     justify-content: center;
 
     a {
-      width: 80px;
-      height: 80px;
-      line-height: 80px;
-      font-size: 80px;
-      margin-right: 20px;
+      margin-right: 26px;
 
       mat-icon {
-        width: 70px;
-        height: 70px;
-        line-height: 70px;
-        font-size: 70px
+        width: 35px;
+        height: 35px;
+        line-height: 35px;
+        font-size: 35px
       };
     }
   }
