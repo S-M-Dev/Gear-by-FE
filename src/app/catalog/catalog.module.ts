@@ -33,7 +33,7 @@ const MATERIAL_MODULES = [
   MatSliderModule,
   MatDialogModule,
   MatDatepickerModule,
-  MatMomentDateModule
+  MatMomentDateModule,
 ];
 
 @NgModule({

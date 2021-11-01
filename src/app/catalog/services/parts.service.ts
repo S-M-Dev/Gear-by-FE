@@ -8,10 +8,6 @@ export class PartsService {
 
   constructor(private http: HttpClient) { }
 
-  performGlobalSearch(name: string) {
-    return this.http.get(`${this.apiUrl}/search`, { params: { name } });
-  }
-
   performFilteredSearch(payload: PartsSearch) {
     return this.http.get<PartItem[]>(`${this.apiUrl}/search`, { params: { ...payload } });
   }

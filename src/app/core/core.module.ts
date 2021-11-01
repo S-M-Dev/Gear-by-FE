@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { ApiInterceptor } from './interceptors/api.interceptor';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
@@ -34,6 +35,7 @@ const MATERIAL_MODULES = [
   MatButtonModule,
   MatProgressSpinnerModule,
   MatSnackBarModule,
+  MatAutocompleteModule,
 ];
 const COMPONENTS = [
   HeaderComponent,
