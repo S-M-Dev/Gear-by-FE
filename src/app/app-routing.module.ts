@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './core/guards/auth.guard';
 
 import { NotFoundPageComponent } from './core/pages/not-found-page/not-found-page.component';
 
@@ -8,6 +9,8 @@ const routes: Routes = [
     path: 'catalog',
     loadChildren: () =>
       import('./catalog/catalog.module').then((m) => m.CatalogModule),
+    canLoad: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'auth',

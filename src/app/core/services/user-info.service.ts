@@ -1,15 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ReplaySubject } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { BehaviorSubject, of, ReplaySubject, Subject } from 'rxjs';
+import { skipUntil, tap } from 'rxjs/operators';
 import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserInfoService {
-  private apiUrl = 'user';
-  private readonly userInfo$ = new ReplaySubject<User>();
+  private readonly apiUrl = 'user';
+  private readonly userInfo$ = new BehaviorSubject<User | null>(null);
 
   constructor(private http: HttpClient) {}
 

@@ -13,7 +13,7 @@ export class HasAdminPermissionsGuard implements CanActivate {
 
   canActivate() {
     return this.userInfoService.getUserInfo().pipe(
-      map((user) => user.role === UserRole.Admin)
+      map((user) => user?.role === UserRole.Admin)
     )
   }
 }
