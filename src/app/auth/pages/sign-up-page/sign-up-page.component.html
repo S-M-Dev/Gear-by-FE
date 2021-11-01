@@ -1,31 +1,27 @@
-<section>
-  <mat-card>
-    <img class="form-logo" src="assets/logo-wo-outline.svg">
-    <form autocomplete="off" [formGroup]="signUpForm" (submit)="signUpForm.valid && signUp()">
-      <mat-form-field>
-        <mat-label>Имя</mat-label>
-        <input matInput formControlName="fullName" name="fullName">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Электронаня почта</mat-label>
-        <input matInput formControlName="email" name="email">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Номер телефона</mat-label>
-        <input matInput formControlName="phoneNumber" name="phoneNumber">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Пароль</mat-label>
-        <input type="password" matInput formControlName="password" name="password">
-      </mat-form-field>
-      <button type="submit" mat-raised-button>
-        <span>Зарегистрироваться</span>
-      </button>
-    </form>
+<gear-by-card-form-wrapper [formGroup]="signUpForm" (submitForm)="signUp()">
+  <ng-container form-content>
+    <mat-form-field>
+      <mat-label>Имя</mat-label>
+      <input matInput formControlName="fullName" name="fullName">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Электронаня почта</mat-label>
+      <input matInput formControlName="email" name="email">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Номер телефона</mat-label>
+      <input matInput formControlName="phoneNumber" name="phoneNumber">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Пароль</mat-label>
+      <input type="password" matInput formControlName="password" name="password">
+    </mat-form-field>
+    <button type="submit" mat-raised-button>
+      <span>Зарегистрироваться</span>
+    </button>
+  </ng-container>
 
-    <div class="form-actions">
-      <a mat-button routerLink="/auth/sign-in">Войти тут</a>
-    </div>
-  </mat-card>
-
-</section>
+  <ng-container form-actions>
+    <a mat-button routerLink="/auth/sign-in">Войти тут</a>
+  </ng-container>
+</gear-by-card-form-wrapper>

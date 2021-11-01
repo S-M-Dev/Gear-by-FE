@@ -12,6 +12,7 @@ import { AuthService } from './services/auth.service';
 
 import { SignInPageComponent } from './pages/sign-in-page/sign-in-page.component';
 import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component';
+import { SharedModule } from '../shared/shared.module';
 
 const MATERIAL_MODULES = [
   MatCardModule,
@@ -23,6 +24,7 @@ const MATERIAL_MODULES = [
   declarations: [SignInPageComponent, SignUpPageComponent],
   imports: [
     CommonModule,
+    SharedModule,
     AuthRoutingModule,
     ReactiveFormsModule,
     ...MATERIAL_MODULES
