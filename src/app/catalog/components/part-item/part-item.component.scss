@@ -1,0 +1,37 @@
+.part-item {
+  border: 3px solid rgba(249, 25, 25, 0.94);
+  border-radius: 10px;
+  width: 295px;
+  height: 322px;
+  margin-bottom: 68px;
+  padding: 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+
+  &__image {
+    width: 257px;
+  }
+
+  &__description {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+
+    &__col {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+
+      &--left {
+        font-weight: bold;
+        font-size: 20px;
+      }
+
+      &--right {
+        font-size: 17px;
+      }
+    }
+  }
+}

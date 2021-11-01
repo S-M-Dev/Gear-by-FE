@@ -8,5 +8,5 @@ import { FormGroup } from '@angular/forms';
 })
 export class CardFormWrapperComponent {
   @Input() public formGroup: FormGroup;
-  @Output() public submitForm = new EventEmitter<unknown>();
+  @Output() public submitForm = new EventEmitter<void>();
 }

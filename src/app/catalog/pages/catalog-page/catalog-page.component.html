@@ -53,19 +53,12 @@
         </div>
       </div>
       <div class="goods-list__results">
-        <mat-card class="goods-list__results__item" (click)="openItemModal()" *ngFor="let item of array">
-          <img class="goods-list__results__item__image" src="assets/part.png">
-          <div class="goods-list__results__item__description">
-            <div class="goods-list__results__item__description__col goods-list__results__item__description__col--left">
-              <span>Подвеска</span>
-              <span>500р</span>
-            </div>
-            <div class="goods-list__results__item__description__col goods-list__results__item__description__col--right">
-              <span>Audi A6</span>
-              <span>(300)</span>
-            </div>
-          </div>
-        </mat-card>
+        <gear-by-part-item *ngFor="let item of items" [item]="item" (openModal)="openItemModal(item)"></gear-by-part-item>
+      </div>
+      <div class="goods-list__actions">
+        <a mat-button *ngIf="(user$ | async) | hasAdminPermission" routerLink="add">
+          Добавить товар
+        </a>
       </div>
       <button mat-fab (click)="scrollToGoods()">
         <mat-icon>arrow_upward</mat-icon>

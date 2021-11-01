@@ -1,0 +1,13 @@
+<mat-card class="part-item" (click)="openModal.emit()">
+  <img class="part-item__image" src="assets/part.png">
+  <div class="part-item__description">
+    <div class="part-item__description__col part-item__description__col--left">
+      <span>{{ item.name }}</span>
+      <span>{{ item.price }}</span>
+    </div>
+    <div class="part-item__description__col part-item__description__col--right">
+      <span>{{ item.carMark }} {{ item.carModel }}</span>
+      <span>{{ item.amount }}</span>
+    </div>
+  </div>
+</mat-card>

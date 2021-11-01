@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 
 import { CardFormWrapperComponent } from './components/card-form-wrapper/card-form-wrapper.component';
+import { HasAdminPermissionPipe } from './pipes/has-admin-permission.pipe';
 
 const MATERIAL_MODULES = [
   MatCardModule,
@@ -14,13 +15,14 @@ const MATERIAL_MODULES = [
   MatButtonModule,
 ];
 
-const COMPONENTS = [
+const DECLARATIONS = [
   CardFormWrapperComponent,
+  HasAdminPermissionPipe
 ];
 
 @NgModule({
   declarations: [
-    ...COMPONENTS,
+    ...DECLARATIONS,
   ],
   imports: [
     CommonModule,
@@ -28,7 +30,7 @@ const COMPONENTS = [
     ...MATERIAL_MODULES,
   ],
   exports: [
-    ...COMPONENTS,
+    ...DECLARATIONS,
   ]
 })
 export class SharedModule { }

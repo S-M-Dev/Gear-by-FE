@@ -11,15 +11,16 @@ const routes: Routes = [
   },
   {
     path: 'auth',
-    loadChildren: () =>
-      import('./auth/auth.module').then((m) => m.AuthModule),
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   { path: '', redirectTo: 'catalog', pathMatch: 'full' },
   { path: '**', component: NotFoundPageComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
+  ],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

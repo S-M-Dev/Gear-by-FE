@@ -1,7 +1,7 @@
 <div class="item-modal-wrapper">
   <div class="item-modal__title">
-    <h2>Подвеска</h2>
-    <span>(300)</span>
+    <h2>{{ data.name }}</h2>
+    <span>({{ data.amount }})</span>
   </div>
   <div class="item-modal__content">
     <div class="item-modal__content__images">
@@ -12,11 +12,10 @@
       <img src="assets/part.png">
     </div>
     <div class="item-modal__content__details">
-      <div class="item-modal__content__details__price">500р</div>
+      <div class="item-modal__content__details__price">{{ data.price }}</div>
       <div class="item-modal__content__details__text">
-        <span>Марка: Audi</span>
-        <span>Модель: A6</span>
-        <span>Цвет: серый</span>
+        <span>Марка: {{ data.carMark }}</span>
+        <span>Модель: {{ data.carModel }}</span>
       </div>
 
       <button mat-button>Добавить в корзину</button>
@@ -26,7 +25,7 @@
     <h3>Описание</h3>
 
     <article>
-      Подвеска автомобиля, или система подрессоривания, — совокупность деталей, узлов и механизмов, играющих роль соединительного звена между кузовом автомобиля и дорогой
+      {{ data.description }}
     </article>
   </div>
 </div>

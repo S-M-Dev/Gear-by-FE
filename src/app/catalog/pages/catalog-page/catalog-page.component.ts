@@ -3,31 +3,40 @@ import { ViewportScroller } from '@angular/common';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { MatDialog } from '@angular/material/dialog';
 import { ItemModalComponent } from '../../components/item-modal/item-modal.component';
+import { UserInfoService } from './../../../core/services/user-info.service';
+import { ActivatedRoute } from '@angular/router';
+import { PartItem } from '../../models/parts.model';
 
 @Component({
   selector: 'gear-by-catalog-page',
   templateUrl: './catalog-page.component.html',
-  styleUrls: ['./catalog-page.component.scss']
+  styleUrls: ['./catalog-page.component.scss'],
 })
 export class CatalogPageComponent implements OnInit {
   mobileQuery: MediaQueryList;
   opened = true;
-  goodsCategories = [
-    'Категория',
-    'Марка',
-    'Модель',
-    'Год выпуска',
-  ];
+  goodsCategories = ['Категория', 'Марка', 'Модель', 'Год выпуска'];
   array = Array(20).fill(0);
+
+  user$ = this.userInfoService.getUserInfo();
+  items: PartItem[];
 
   private _mobileQueryListener: () => void;
 
-  constructor(private scroller: ViewportScroller, public dialog: MatDialog, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+  constructor(
+    private scroller: ViewportScroller,
+    private dialog: MatDialog,
+    private userInfoService: UserInfoService,
+    private route: ActivatedRoute,
+    changeDetectorRef: ChangeDetectorRef,
+    media: MediaMatcher
+  ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
   ngOnInit(): void {
+    this.items = this.route.snapshot.data.items;
   }
 
   formatLabel(value: number) {
@@ -42,8 +51,7 @@ export class CatalogPageComponent implements OnInit {
     this.scroller.scrollToAnchor('goods');
   }
 
-  openItemModal() {
-    const dialogRef = this.dialog.open(ItemModalComponent);
+  openItemModal(item: PartItem) {
+    const dialogRef = this.dialog.open(ItemModalComponent, { data: item });
   }
-
 }

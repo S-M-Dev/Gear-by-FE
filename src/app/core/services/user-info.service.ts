@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { User } from '../models/user.model';
 
@@ -9,7 +9,7 @@ import { User } from '../models/user.model';
 })
 export class UserInfoService {
   private apiUrl = 'user';
-  private readonly userInfo$ = new Subject<User>();
+  private readonly userInfo$ = new ReplaySubject<User>();
 
   constructor(private http: HttpClient) {}
 

@@ -16,6 +16,12 @@ import { CatalogRoutingModule } from './catalog-routing.module';
 import { CatalogPageComponent } from './pages/catalog-page/catalog-page.component';
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
 import { ItemModalComponent } from './components/item-modal/item-modal.component';
+import { SharedModule } from '../shared/shared.module';
+import { AddItemPageComponent } from './pages/add-item-page/add-item-page.component';
+import { PartsService } from './services/parts.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CatalogResolver } from './resolvers/catalog.resolver';
+import { PartItemComponent } from './components/part-item/part-item.component';
 
 const MATERIAL_MODULES = [
   MatInputModule,
@@ -34,12 +40,20 @@ const MATERIAL_MODULES = [
   declarations: [
     CatalogPageComponent,
     CartPageComponent,
-    ItemModalComponent
+    ItemModalComponent,
+    AddItemPageComponent,
+    PartItemComponent
   ],
   imports: [
     CommonModule,
+    SharedModule,
     CatalogRoutingModule,
+    ReactiveFormsModule,
     ...MATERIAL_MODULES,
+  ],
+  providers: [
+    PartsService,
+    CatalogResolver,
   ]
 })
 export class CatalogModule { }

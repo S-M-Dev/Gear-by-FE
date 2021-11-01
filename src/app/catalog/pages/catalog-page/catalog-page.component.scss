@@ -180,7 +180,7 @@
 
   &__results {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
     padding: 48px 98px 0 98px;
 
@@ -220,6 +220,16 @@
           }
         }
       }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+
+    a {
+      background: #f92a2a;
+      color: white;
     }
   }
 
