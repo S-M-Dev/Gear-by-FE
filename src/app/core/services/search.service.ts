@@ -2,6 +2,7 @@ import { HttpBackend, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PartItem } from 'src/app/catalog/models/parts.model';
+import { environment } from './../../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,6 @@ export class SearchService {
   }
 
   performGlobalSearch(name: string): Observable<PartItem[]> {
-    return this.http.get<PartItem[]>(`${this.apiUrl}/search`, { params: { name } });
+    return this.http.get<PartItem[]>(`${environment.apiUrl}/${this.apiUrl}/search`, { params: { name } });
   }
 }
