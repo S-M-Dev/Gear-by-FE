@@ -14,6 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatBadgeModule } from '@angular/material/badge';
 
 import { ApiInterceptor } from './interceptors/api.interceptor';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
@@ -36,19 +37,14 @@ const MATERIAL_MODULES = [
   MatProgressSpinnerModule,
   MatSnackBarModule,
   MatAutocompleteModule,
+  MatBadgeModule,
 ];
-const COMPONENTS = [
-  HeaderComponent,
-  FooterComponent,
-  LoadingSpinnerComponent,
-];
-const PAGES = [
-  NotFoundPageComponent,
-];
+const COMPONENTS = [HeaderComponent, FooterComponent, LoadingSpinnerComponent];
+const PAGES = [NotFoundPageComponent];
 
 @NgModule({
-  declarations: [  ...COMPONENTS, ...PAGES ],
-  exports: [ ...COMPONENTS, ...PAGES ],
+  declarations: [...COMPONENTS, ...PAGES],
+  exports: [...COMPONENTS, ...PAGES],
   imports: [
     CommonModule,
     RouterModule,
@@ -73,6 +69,6 @@ const PAGES = [
       useClass: LoaderInterceptor,
       multi: true,
     },
-  ]
+  ],
 })
-export class CoreModule { }
+export class CoreModule {}

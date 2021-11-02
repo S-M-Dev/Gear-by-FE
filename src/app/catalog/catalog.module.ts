@@ -22,6 +22,9 @@ import { PartsService } from './services/parts.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CatalogResolver } from './resolvers/catalog.resolver';
 import { PartItemComponent } from './components/part-item/part-item.component';
+import { IsInCartPipe } from './pipes/is-in-cart.pipe';
+import { CartItemComponent } from './components/cart-item/cart-item.component';
+import { OrderService } from './services/order.service';
 
 const MATERIAL_MODULES = [
   MatInputModule,
@@ -42,7 +45,9 @@ const MATERIAL_MODULES = [
     CartPageComponent,
     ItemModalComponent,
     AddItemPageComponent,
-    PartItemComponent
+    PartItemComponent,
+    IsInCartPipe,
+    CartItemComponent,
   ],
   imports: [
     CommonModule,
@@ -54,6 +59,7 @@ const MATERIAL_MODULES = [
   providers: [
     PartsService,
     CatalogResolver,
+    OrderService,
   ]
 })
 export class CatalogModule { }

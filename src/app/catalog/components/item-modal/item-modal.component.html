@@ -18,7 +18,8 @@
         <span>Модель: {{ data.carModel }}</span>
       </div>
 
-      <button mat-button>Добавить в корзину</button>
+      <button mat-button *ngIf="!(data | isInCart)" (click)="addToCart()">Добавить в корзину</button>
+      <button mat-button *ngIf="data | isInCart" (click)="removeFromCart()">Удалить из корзины</button>
     </div>
   </div>
   <div class="item-modal__description">

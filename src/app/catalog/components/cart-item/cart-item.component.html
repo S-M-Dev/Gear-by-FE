@@ -1,0 +1,25 @@
+<mat-card class="cart-item">
+  <img class="cart-item__image" src="assets/part.png">
+  <div class="cart-item__description">
+    <h3 class="cart-item__description__title">{{ item.name }}</h3>
+    <div class="cart-item__description__text">
+      <span>Марка: {{ item.carMark }}</span>
+      <span>Модель: {{ item.carModel }}</span>
+    </div>
+  </div>
+  <div class="cart-item__counter">
+    <button mat-icon-button (click)="decreaseCount()">
+      <mat-icon>remove</mat-icon>
+    </button>
+    <span>{{ formGroup.get('amount')?.value || 1 }}</span>
+    <button mat-icon-button (click)="increaseCount()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <div class="cart-item__price">
+    {{ item.price }}
+  </div>
+  <button mat-icon-button class="cart-item__delete" (click)="onRemoveFromCart()">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-card>
