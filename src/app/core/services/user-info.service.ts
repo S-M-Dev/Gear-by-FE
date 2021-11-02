@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, of, ReplaySubject, Subject } from 'rxjs';
-import { skipUntil, tap } from 'rxjs/operators';
+import { tap, switchMapTo, concatMapTo, map, skipUntil, delayWhen } from 'rxjs/operators';
 import { User } from '../models/user.model';
 
 @Injectable({
@@ -10,19 +10,28 @@ import { User } from '../models/user.model';
 export class UserInfoService {
   private readonly apiUrl = 'user';
   private readonly userInfo$ = new BehaviorSubject<User | null>(null);
+  private readonly loadingFinished$ = new ReplaySubject();
 
   constructor(private http: HttpClient) {}
 
   fetchUserInfo() {
-    return this.http.get<User>(this.apiUrl).pipe(
-      tap((userInfo) => {
-        this.userInfo$.next(userInfo);
-      })
-    );
+    if (this.getToken()) {
+      return this.http.get<User>(this.apiUrl).pipe(
+        tap((userInfo) => {
+          this.loadingFinished$.next();
+          this.userInfo$.next(userInfo);
+        })
+      );
+    }
+
+    this.loadingFinished$.next();
+    return of();
   }
 
   getUserInfo() {
-    return this.userInfo$.asObservable();
+    return this.userInfo$.pipe(
+      skipUntil(this.loadingFinished$)
+    );
   }
 
   setToken(token: string) {
