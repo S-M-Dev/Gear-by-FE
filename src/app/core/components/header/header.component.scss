@@ -60,5 +60,33 @@ mat-toolbar {
         font-size: 35px
       };
     }
+
+    .select-lang {
+      width: 95px;
+      height: 35px;
+      border: 3px solid #000000;
+      box-sizing: border-box;
+      border-radius: 5px;
+      padding: 0 10px;
+    }
+  }
+}
+
+::ng-deep {
+  .lang-select {
+    background: unset;
+    border: 3px solid #000000;
+    margin-top: 50px;
+
+    mat-option {
+      line-height: 2em !important;
+      height: 2em !important;
+      box-sizing: border-box !important;
+    }
+  }
+
+  .lang-flag {
+    margin-right: 10px;
+    width: 18px;
   }
 }

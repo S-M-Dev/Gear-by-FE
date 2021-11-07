@@ -15,6 +15,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatSelectModule } from '@angular/material/select';
 
 import { ApiInterceptor } from './interceptors/api.interceptor';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
@@ -38,6 +39,7 @@ const MATERIAL_MODULES = [
   MatSnackBarModule,
   MatAutocompleteModule,
   MatBadgeModule,
+  MatSelectModule,
 ];
 const COMPONENTS = [HeaderComponent, FooterComponent, LoadingSpinnerComponent];
 const PAGES = [NotFoundPageComponent];

@@ -29,6 +29,20 @@
       <a mat-icon-button routerLink="catalog/cart">
         <mat-icon [matBadge]="cartCount$ | async">shopping_cart</mat-icon>
       </a>
+      <mat-select class="select-lang" [(value)]="currentLang" [disableOptionCentering]="true" panelClass="lang-select">
+        <mat-select-trigger>
+          <img class="lang-flag" [src]="'assets/' + currentLang + '.svg'">
+          <span>{{ currentLang }}</span>
+        </mat-select-trigger>
+        <mat-option value="ru">
+          <img class="lang-flag" src="assets/ru.svg">
+          <span>Ru</span>
+        </mat-option>
+        <mat-option value="en">
+          <img class="lang-flag" src="assets/en.svg">
+          <span>En</span>
+        </mat-option>
+      </mat-select>
     </div>
   </mat-toolbar>
 </header>

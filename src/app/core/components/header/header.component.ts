@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
   searchForm = new FormControl();
   filteredOptions$: Observable<PartItem[]>;
   cartCount$: Observable<number | undefined>;
+  currentLang = 'ru';
 
   constructor(
     private searchService: SearchService,
