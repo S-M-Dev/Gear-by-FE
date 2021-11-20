@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { CardFormWrapperComponent } from './components/card-form-wrapper/card-form-wrapper.component';
 import { HasAdminPermissionPipe } from './pipes/has-admin-permission.pipe';
+import { LandingBannerComponent } from './components/landing-banner/landing-banner.component';
 
 const MATERIAL_MODULES = [
   MatCardModule,
@@ -17,7 +18,8 @@ const MATERIAL_MODULES = [
 
 const DECLARATIONS = [
   CardFormWrapperComponent,
-  HasAdminPermissionPipe
+  HasAdminPermissionPipe,
+  LandingBannerComponent,
 ];
 
 @NgModule({

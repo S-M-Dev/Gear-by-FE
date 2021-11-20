@@ -1,0 +1,48 @@
+.brand-banner {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 1010px;
+  color: white;
+
+  &__left {
+    width: 490px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+      font-style: normal;
+      font-weight: 900;
+      font-size: 65px;
+      line-height: 76px;
+      margin-bottom: 80px;
+      text-align: center;
+    }
+
+    a {
+      width: 293px;
+      height: 54px;
+      background: #e70f0f;
+      border-radius: 10px;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 35px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &__right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 729px;
+    }
+  }
+}

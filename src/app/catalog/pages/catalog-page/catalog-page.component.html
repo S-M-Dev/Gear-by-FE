@@ -1,12 +1,5 @@
-<section class="brand-banner">
-  <div class="brand-banner__left">
-    <h1>Магазин автозапчастей</h1>
-    <button mat-button (click)="scrollToGoods()">В каталог</button>
-  </div>
-  <div class="brand-banner__right">
-    <img src="assets/car.png">
-  </div>
-</section>
+<gear-by-landing-banner (goToCatalog)="scrollToGoods()"></gear-by-landing-banner>
+
 <section class="goods-list" id="goods">
   <mat-drawer-container>
     <mat-drawer mode="side" opened>

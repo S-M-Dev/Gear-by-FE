@@ -25,8 +25,6 @@ import { PartItemComponent } from './components/part-item/part-item.component';
 import { IsInCartPipe } from './pipes/is-in-cart.pipe';
 import { CartItemComponent } from './components/cart-item/cart-item.component';
 import { OrderService } from './services/order.service';
-import { AboutPageComponent } from './pages/about-page/about-page.component';
-import { DeliveryPageComponent } from './pages/delivery-page/delivery-page.component';
 
 const MATERIAL_MODULES = [
   MatInputModule,
@@ -50,8 +48,6 @@ const MATERIAL_MODULES = [
     PartItemComponent,
     IsInCartPipe,
     CartItemComponent,
-    AboutPageComponent,
-    DeliveryPageComponent,
   ],
   imports: [
     CommonModule,
