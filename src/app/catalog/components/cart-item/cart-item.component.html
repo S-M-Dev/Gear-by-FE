@@ -8,18 +8,18 @@
     </div>
   </div>
   <div class="cart-item__counter">
-    <button mat-icon-button (click)="decreaseCount()">
+    <button type="button" mat-icon-button (click)="decreaseCount()">
       <mat-icon>remove</mat-icon>
     </button>
     <span>{{ formGroup.get('amount')?.value || 1 }}</span>
-    <button mat-icon-button (click)="increaseCount()">
+    <button type="button" mat-icon-button (click)="increaseCount()">
       <mat-icon>add</mat-icon>
     </button>
   </div>
   <div class="cart-item__price">
     {{ item.price }}р.
   </div>
-  <button mat-icon-button class="cart-item__delete" (click)="onRemoveFromCart()">
+  <button type="button" mat-icon-button class="cart-item__delete" (click)="onRemoveFromCart()">
     <mat-icon>close</mat-icon>
   </button>
 </mat-card>
