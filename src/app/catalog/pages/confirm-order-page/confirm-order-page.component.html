@@ -1,0 +1,27 @@
+<section>
+  <h1>Спасибо за ваш заказ</h1>
+
+  <div class="order-card" *ngFor="let item of cartItems">
+    <img class="order-card__image" src="assets/part.png">
+    <div class="order-card__description">
+      <h3 class="order-card__description__title">{{ item.name }}</h3>
+      <div class="order-card__description__text">
+        <span>Марка: {{ item.carMark }}</span>
+        <span>Модель: {{ item.carModel }}</span>
+      </div>
+    </div>
+    <div class="order-card__details">
+      <div class="order-card__details__text">
+        <span>Дата: {{ order.deliveryDate | date }}</span>
+        <span>Имя: {{ order.owner.fullName }}</span>
+        <span>Адрес: {{ order.owner.address }}</span>
+        <span>Телефон: {{ order.owner.phoneNumber }}</span>
+      </div>
+    </div>
+    <div class="order-card__price">
+      Итого: {{ getPrice(item) }}р.
+    </div>
+  </div>
+
+  <a mat-button routerLink="/catalog">Вернуться к покупкам</a>
+</section>

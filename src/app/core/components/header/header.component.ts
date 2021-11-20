@@ -48,7 +48,7 @@ export class HeaderComponent implements OnInit {
   }
 
   navigateToProduct(item: PartItem) {
-    this.router.navigateByUrl(`/catalog?id=${item.id}#goods`);
+    this.router.navigateByUrl(`/catalog?id=${item.id}`);
     this.searchForm.setValue(item.name);
   }
 

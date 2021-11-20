@@ -68,6 +68,10 @@ mat-drawer {
         width: 287px;
         font-size: 30px;
         height: 70px;
+
+        &[disabled] {
+          background: lightgrey;
+        }
       }
     }
   }
@@ -75,8 +79,14 @@ mat-drawer {
 
 mat-drawer-content {
   padding: 68px 70px 29px 57px;
+  min-height: 600px;
 
   h2 {
     font-size: 40px;
+  }
+
+  .cart-empty {
+    font-size: 27px;
+    margin-top: 40px;
   }
 }

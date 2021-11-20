@@ -5,6 +5,8 @@
         <h2>Корзина</h2>
 
         <ng-container *ngIf="cartItems$ | async as cartItems">
+          <div *ngIf="!cartItems.length" class="cart-empty">Корзина пуста</div>
+
           <gear-by-cart-item
             formArrayName="orderPositions"
             *ngFor="let group of $any(cartForm.get('orderPositions')).controls; let i = index"
@@ -33,22 +35,7 @@
               <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
 
-            <mat-form-field appearance="fill">
-              <mat-label>Имя</mat-label>
-              <input matInput>
-            </mat-form-field>
-
-            <mat-form-field appearance="fill">
-              <mat-label>Адрес</mat-label>
-              <input matInput>
-            </mat-form-field>
-
-            <mat-form-field appearance="fill">
-              <mat-label>Телефон</mat-label>
-              <input matInput>
-            </mat-form-field>
-
-            <button mat-button type="submit">Оформить заказ</button>
+            <button mat-button type="submit" [disabled]="!((cartItems$ | async)?.length)">Оформить заказ</button>
           </div>
         </mat-card>
       </mat-drawer>

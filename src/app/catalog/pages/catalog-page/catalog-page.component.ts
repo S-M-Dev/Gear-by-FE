@@ -71,7 +71,7 @@ export class CatalogPageComponent implements OnInit, AfterViewInit {
 
       if (partId) {
         const part = this.items.find((item) => item.id === +partId);
-        this.scrollToGoods();
+        setTimeout(() => this.scrollToGoods(), 0);
         setTimeout(() => this.openItemModal(part as PartItem), 1000);
       }
     });

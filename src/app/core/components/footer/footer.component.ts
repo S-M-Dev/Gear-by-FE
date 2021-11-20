@@ -11,7 +11,7 @@ export class FooterComponent {
   public socialLinks: Link[] = [
     { name: 'vk', href: 'https://vk.com' },
     { name: 'facebook', href: 'https://www.facebook.com' },
-    { name: 'instagram', href: 'https://www.instagram.co' },
+    { name: 'instagram', href: 'https://www.instagram.com' },
     { name: 'telegram', href: 'https://telegram.org' },
     { name: 'twitter', href: 'https://twitter.com' },
     { name: 'linkedin', href: 'https://www.linkedin.com' },

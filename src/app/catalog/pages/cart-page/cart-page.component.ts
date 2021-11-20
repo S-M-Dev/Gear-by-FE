@@ -20,6 +20,7 @@ export class CartPageComponent implements OnInit {
   totalAmount = 0;
 
   private unsubscribeValueChanges$ = new Subject();
+  private cartItems: PartItem[];
 
   constructor(
     private cartService: CartService,
@@ -34,6 +35,7 @@ export class CartPageComponent implements OnInit {
     });
     this.cartItems$ = this.cartService.getCartUpdates().pipe(
       tap((cartItems) => {
+        this.cartItems = cartItems;
         this.unsubscribeValueChanges$.next();
 
         this.cartForm.setControl('orderPositions', this.fb.array([]));
@@ -76,9 +78,9 @@ export class CartPageComponent implements OnInit {
   }
 
   submitOrder() {
-    this.orderService.submitOrder(this.cartForm.value).subscribe(() => {
+    this.orderService.submitOrder(this.cartForm.value).subscribe((order) => {
+      this.router.navigate(['/catalog/confirm-order'], { state: { order, cart: this.cartItems } });
       this.cartService.clearCart();
-      this.router.navigateByUrl('/');
     });
   }
 
