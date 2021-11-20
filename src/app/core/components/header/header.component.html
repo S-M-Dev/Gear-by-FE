@@ -16,7 +16,7 @@
         <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
       <mat-autocomplete #auto="matAutocomplete" (optionSelected)="navigateToProduct($event.option.value)">
-        <mat-option *ngFor="let option of (filteredOptions$ | async)" [value]="option.id">
+        <mat-option *ngFor="let option of (filteredOptions$ | async)" [value]="option">
           {{ option.name }}
         </mat-option>
       </mat-autocomplete>
