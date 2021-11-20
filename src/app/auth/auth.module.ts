@@ -15,6 +15,7 @@ import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component
 import { SharedModule } from '../shared/shared.module';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { ForgotPasswordPageComponent } from './pages/forgot-password-page/forgot-password-page.component';
+import { ForgotPasswordService } from './services/forgot-password.service';
 
 const MATERIAL_MODULES = [
   MatCardModule,
@@ -33,6 +34,7 @@ const MATERIAL_MODULES = [
   ],
   providers: [
     AuthService,
+    ForgotPasswordService
   ]
 })
 export class AuthModule {}

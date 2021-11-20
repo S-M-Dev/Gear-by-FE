@@ -23,6 +23,12 @@ export class AuthService {
     );
   }
 
+  resetPassword(userId: string, password: string) {
+    return this.http.patch<AuthResponse>(`${this.apiUrl}/${userId}`, { password }).pipe(
+      switchMap((response) => this.handleAuthPostStep(response))
+    );
+  }
+
   private handleAuthPostStep({ token }: AuthResponse) {
     this.userInfoService.setToken(token);
     return this.userInfoService.fetchUserInfo();
