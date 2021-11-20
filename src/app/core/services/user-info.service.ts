@@ -44,5 +44,6 @@ export class UserInfoService {
 
   clearUserData() {
     localStorage.removeItem('userToken');
+    this.userInfo$.next(null);
   }
 }

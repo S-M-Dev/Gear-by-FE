@@ -1,9 +1,9 @@
 import { UserInfoService } from './../../services/user-info.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { filter, map, withLatestFrom } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { map, debounceTime, switchMap } from 'rxjs/operators';
 import { combineLatest, Observable } from 'rxjs';
-import { debounceTime, switchMap } from 'rxjs/operators';
 import { PartItem } from 'src/app/catalog/models/parts.model';
 import { CartService } from '../../services/cart.service';
 import { SearchService } from '../../services/search.service';
@@ -15,28 +15,44 @@ import { SearchService } from '../../services/search.service';
 })
 export class HeaderComponent implements OnInit {
   searchForm = new FormControl();
+  currentLang = 'ru';
+
   filteredOptions$: Observable<PartItem[]>;
   cartCount$: Observable<number | undefined>;
-  currentLang = 'ru';
+  isAuthenticated$: Observable<boolean>;
 
   constructor(
     private searchService: SearchService,
     private cartService: CartService,
-    private userInfoService: UserInfoService
+    private userInfoService: UserInfoService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
+    this.isAuthenticated$ = this.userInfoService.getUserInfo().pipe(
+      map((user) => !!user),
+      debounceTime(300),
+    );
     this.cartCount$ = combineLatest([
       this.cartService.getCartUpdates(),
-      this.userInfoService.getUserInfo(),
+      this.isAuthenticated$,
     ]).pipe(
-      map(([items, user]) =>
-        !!user && items && items.length ? items.length : undefined
+      map(([items, isAuthenticated]) =>
+        isAuthenticated && items && items.length ? items.length : undefined
       )
     );
     this.filteredOptions$ = this.searchForm.valueChanges.pipe(
       debounceTime(300),
       switchMap((value) => this.searchService.performGlobalSearch(value))
     );
+  }
+
+  performNavigation(value: string): void {
+    if (value === '/auth/logout') {
+      this.userInfoService.clearUserData();
+      this.router.navigateByUrl('/auth/sign-in');
+    } else {
+      this.router.navigateByUrl(value);
+    }
   }
 }

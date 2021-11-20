@@ -10,11 +10,11 @@ import { map, take } from 'rxjs/operators';
 export class AuthGuard implements CanActivate, CanLoad {
   constructor(private userInfoService: UserInfoService, private router: Router) {}
 
-  canActivate(): Observable<boolean | UrlTree> {
+  canActivate(): Observable<boolean> {
     return this.handleGuard();
   }
 
-  canLoad(): Observable<boolean | UrlTree> {
+  canLoad(): Observable<boolean> {
     return this.handleGuard();
   }
 
@@ -26,7 +26,9 @@ export class AuthGuard implements CanActivate, CanLoad {
           return true;
         }
 
-        return this.router.parseUrl('/auth/sign-in');
+        this.router.navigateByUrl('/auth/sign-in');
+
+        return false;
       })
     );
   }

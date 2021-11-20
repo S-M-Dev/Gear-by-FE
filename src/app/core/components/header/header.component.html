@@ -23,9 +23,34 @@
     </form>
 
     <div class="controls">
-      <a mat-icon-button routerLink="auth/sign-in">
+      <button mat-icon-button (click)="authSelect.open()">
         <mat-icon>person</mat-icon>
-      </a>
+      </button>
+      <mat-select
+        #authSelect
+        class="auth-select"
+        [disableOptionCentering]="true"
+        panelClass="auth-select-panel"
+        (selectionChange)="performNavigation($event.value)"
+      >
+        <mat-option value="/auth/sign-in" *ngIf="!(isAuthenticated$ | async)">
+          <span>Войти</span>
+          <mat-icon>arrow_right</mat-icon>
+        </mat-option>
+        <mat-option value="/auth/sign-up" *ngIf="!(isAuthenticated$ | async)">
+          <span>Зарегистрироваться</span>
+          <mat-icon>arrow_right</mat-icon>
+        </mat-option>
+
+        <mat-option value="/auth/profile" *ngIf="isAuthenticated$ | async">
+          <span>Профиль</span>
+          <mat-icon>arrow_right</mat-icon>
+        </mat-option>
+        <mat-option value="/auth/logout" *ngIf="isAuthenticated$ | async">
+          <span>Выйти</span>
+          <mat-icon>arrow_right</mat-icon>
+        </mat-option>
+      </mat-select>
       <a mat-icon-button routerLink="catalog/cart">
         <mat-icon [matBadge]="cartCount$ | async">shopping_cart</mat-icon>
       </a>
