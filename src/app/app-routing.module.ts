@@ -17,15 +17,13 @@ const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
-    canLoad: [IsNotAuthenticatedGuard],
-    canActivate: [IsNotAuthenticatedGuard],
   },
   { path: '**', component: NotFoundPageComponent },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
+    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled', onSameUrlNavigation: 'reload' }),
   ],
   exports: [RouterModule],
 })
