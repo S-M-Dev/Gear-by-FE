@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ViewportScroller } from '@angular/common';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { MatDialog } from '@angular/material/dialog';
@@ -12,7 +12,7 @@ import { PartItem } from '../../models/parts.model';
   templateUrl: './catalog-page.component.html',
   styleUrls: ['./catalog-page.component.scss'],
 })
-export class CatalogPageComponent implements OnInit {
+export class CatalogPageComponent implements OnInit, AfterViewInit {
   mobileQuery: MediaQueryList;
   opened = true;
   goodsCategories = ['Категория', 'Марка', 'Модель', 'Год выпуска'];
@@ -39,6 +39,10 @@ export class CatalogPageComponent implements OnInit {
     this.items = this.route.snapshot.data.items;
   }
 
+  ngAfterViewInit(): void {
+    this.handleQueryParam();
+  }
+
   formatLabel(value: number) {
     if (value >= 1000) {
       return Math.round(value / 1000) + '$';
@@ -53,5 +57,17 @@ export class CatalogPageComponent implements OnInit {
 
   openItemModal(item: PartItem) {
     const dialogRef = this.dialog.open(ItemModalComponent, { data: item });
+  }
+
+  private handleQueryParam(): void {
+    this.route.queryParams.subscribe(() => {
+      const partId = this.route.snapshot.queryParams.id;
+
+      if (partId) {
+        const part = this.items.find((item) => item.id === +partId);
+        this.scrollToGoods();
+        setTimeout(() => this.openItemModal(part as PartItem), 1000);
+      }
+    });
   }
 }

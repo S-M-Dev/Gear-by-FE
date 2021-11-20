@@ -47,6 +47,10 @@ export class HeaderComponent implements OnInit {
     );
   }
 
+  navigateToProduct(itemId: string) {
+    this.router.navigateByUrl(`/catalog?id=${itemId}`)
+  }
+
   performNavigation(value: string): void {
     if (value === '/auth/logout') {
       this.userInfoService.clearUserData();

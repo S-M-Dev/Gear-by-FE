@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './core/guards/auth.guard';
+import { IsNotAuthenticatedGuard } from './core/guards/is-not-authenticated.guard';
 
 import { NotFoundPageComponent } from './core/pages/not-found-page/not-found-page.component';
 
@@ -12,11 +13,13 @@ const routes: Routes = [
     canLoad: [AuthGuard],
     canActivate: [AuthGuard],
   },
+  { path: '', redirectTo: 'catalog', pathMatch: 'full' },
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+    canLoad: [IsNotAuthenticatedGuard],
+    canActivate: [IsNotAuthenticatedGuard],
   },
-  { path: '', redirectTo: 'catalog', pathMatch: 'full' },
   { path: '**', component: NotFoundPageComponent },
 ];
 

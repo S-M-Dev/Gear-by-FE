@@ -9,14 +9,14 @@
       </a>
     </div>
 
-    <form class="search-form">
+    <form class="search-form" (submit)="$event.preventDefault()">
       <mat-form-field>
         <mat-label>Поиск</mat-label>
         <input matInput [matAutocomplete]="auto" [formControl]="searchForm">
         <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let option of (filteredOptions$ | async)" [value]="option.name">
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="navigateToProduct($event.option.value)">
+        <mat-option *ngFor="let option of (filteredOptions$ | async)" [value]="option.id">
           {{ option.name }}
         </mat-option>
       </mat-autocomplete>
