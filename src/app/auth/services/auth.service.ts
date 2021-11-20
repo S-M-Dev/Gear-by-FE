@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { switchMap } from 'rxjs/operators';
 
 import { SignInPayload, SignUpPayload, AuthResponse } from './../models/auth.model';
+import { User } from 'src/app/core/models/user.model';
 
 @Injectable()
 export class AuthService {
@@ -21,6 +22,12 @@ export class AuthService {
     return this.http.post<AuthResponse>(this.apiUrl, payload).pipe(
       switchMap((response) => this.handleAuthPostStep(response))
     );
+  }
+
+  editUser(payload: User) {
+    return this.http.put<User>(this.apiUrl, payload).pipe(
+      switchMap(() => this.userInfoService.fetchUserInfo())
+    )
   }
 
   resetPassword(userId: string, password: string) {

@@ -1,1 +1,23 @@
-<p>profile-page works!</p>
+<gear-by-card-form-wrapper [formGroup]="userInfoForm" (submitForm)="editUser()">
+  <ng-container form-content>
+    <mat-form-field>
+      <mat-label>Имя</mat-label>
+      <input matInput formControlName="fullName" name="fullName">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Электронная почта</mat-label>
+      <input matInput formControlName="email" name="email">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Номер телефона</mat-label>
+      <input matInput formControlName="phoneNumber" name="phoneNumber">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Адрес</mat-label>
+      <input matInput formControlName="address" name="address">
+    </mat-form-field>
+    <button type="submit" mat-raised-button>
+      <span>Изменить данные</span>
+    </button>
+  </ng-container>
+</gear-by-card-form-wrapper>
