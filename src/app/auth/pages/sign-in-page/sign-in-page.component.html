@@ -1,7 +1,7 @@
 <gear-by-card-form-wrapper [formGroup]="loginForm" (submitForm)="login()">
   <ng-container form-content>
     <mat-form-field>
-      <mat-label>Электронаня почта</mat-label>
+      <mat-label>Электронная почта</mat-label>
       <input matInput formControlName="email" name="email">
     </mat-form-field>
     <mat-form-field>
@@ -15,6 +15,6 @@
 
   <ng-container form-actions>
     <a mat-button routerLink="/auth/sign-up">Зарегистрироваться</a>
-    <a mat-button>Забыли пароль?</a>
+    <a mat-button routerLink="/auth/forgot-password">Забыли пароль?</a>
   </ng-container>
 </gear-by-card-form-wrapper>

@@ -1,6 +1,9 @@
 <section>
   <mat-card>
     <img class="form-logo" src="assets/logo-wo-outline.svg">
+
+    <ng-content select=[message]></ng-content>
+
     <form autocomplete="off" [formGroup]="formGroup" (submit)="formGroup.valid && submitForm.emit()">
       <ng-content select=[form-content]></ng-content>
     </form>

@@ -14,6 +14,7 @@ import { SignInPageComponent } from './pages/sign-in-page/sign-in-page.component
 import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component';
 import { SharedModule } from '../shared/shared.module';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { ForgotPasswordPageComponent } from './pages/forgot-password-page/forgot-password-page.component';
 
 const MATERIAL_MODULES = [
   MatCardModule,
@@ -22,7 +23,7 @@ const MATERIAL_MODULES = [
 ]
 
 @NgModule({
-  declarations: [SignInPageComponent, SignUpPageComponent, ProfilePageComponent],
+  declarations: [SignInPageComponent, SignUpPageComponent, ProfilePageComponent, ForgotPasswordPageComponent],
   imports: [
     CommonModule,
     SharedModule,
