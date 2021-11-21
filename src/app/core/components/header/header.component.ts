@@ -21,6 +21,8 @@ export class HeaderComponent implements OnInit {
   cartCount$: Observable<number | undefined>;
   isAuthenticated$: Observable<boolean>;
 
+  isMenuOpened: boolean;
+
   constructor(
     private searchService: SearchService,
     private cartService: CartService,
@@ -50,6 +52,7 @@ export class HeaderComponent implements OnInit {
   navigateToProduct(item: PartItem) {
     this.router.navigateByUrl(`/catalog?id=${item.id}`);
     this.searchForm.setValue(item.name);
+    this.toggleMenu();
   }
 
   performNavigation(value: string): void {
@@ -59,5 +62,10 @@ export class HeaderComponent implements OnInit {
     } else {
       this.router.navigateByUrl(value);
     }
+    this.toggleMenu();
+  }
+
+  toggleMenu(): void {
+    this.isMenuOpened = !this.isMenuOpened;
   }
 }

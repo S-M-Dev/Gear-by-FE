@@ -11,6 +11,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 0 20px;
 
     h1 {
       font-style: normal;
@@ -42,7 +43,25 @@
     align-items: center;
 
     img {
-      width: 729px;
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .brand-banner {
+    flex-direction: column;
+    height: unset;
+    padding: 100px 0;
+
+    h1 {
+      font-size: 40px;
+    }
+
+    &__right {
+      img {
+        max-width: 600px;
+      }
     }
   }
 }

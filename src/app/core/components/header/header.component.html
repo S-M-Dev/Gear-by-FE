@@ -9,65 +9,78 @@
       </a>
     </div>
 
-    <form class="search-form" (submit)="$event.preventDefault()">
-      <mat-form-field>
-        <mat-label>Поиск</mat-label>
-        <input matInput [matAutocomplete]="auto" [formControl]="searchForm">
-        <mat-icon matSuffix>search</mat-icon>
-      </mat-form-field>
-      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="navigateToProduct($event.option.value)">
-        <mat-option *ngFor="let option of (filteredOptions$ | async)" [value]="option">
-          {{ option.name }}
-        </mat-option>
-      </mat-autocomplete>
-    </form>
+    <ng-container *ngTemplateOutlet="headerControls"></ng-container>
 
-    <div class="controls">
-      <button mat-icon-button (click)="authSelect.open()">
-        <mat-icon>person</mat-icon>
-      </button>
-      <mat-select
-        #authSelect
-        class="auth-select"
-        [disableOptionCentering]="true"
-        panelClass="auth-select-panel"
-        (selectionChange)="performNavigation($event.value)"
-      >
-        <mat-option value="/auth/sign-in" *ngIf="!(isAuthenticated$ | async)">
-          <span>Войти</span>
-          <mat-icon>arrow_right</mat-icon>
-        </mat-option>
-        <mat-option value="/auth/sign-up" *ngIf="!(isAuthenticated$ | async)">
-          <span>Зарегистрироваться</span>
-          <mat-icon>arrow_right</mat-icon>
-        </mat-option>
-
-        <mat-option value="/auth/profile" *ngIf="isAuthenticated$ | async">
-          <span>Профиль</span>
-          <mat-icon>arrow_right</mat-icon>
-        </mat-option>
-        <mat-option value="/auth/logout" *ngIf="isAuthenticated$ | async">
-          <span>Выйти</span>
-          <mat-icon>arrow_right</mat-icon>
-        </mat-option>
-      </mat-select>
-      <a mat-icon-button routerLink="catalog/cart">
-        <mat-icon [matBadge]="cartCount$ | async">shopping_cart</mat-icon>
-      </a>
-      <mat-select class="select-lang" [(value)]="currentLang" [disableOptionCentering]="true" panelClass="lang-select">
-        <mat-select-trigger>
-          <img class="lang-flag" [src]="'assets/' + currentLang + '.svg'">
-          <span>{{ currentLang }}</span>
-        </mat-select-trigger>
-        <mat-option value="ru">
-          <img class="lang-flag" src="assets/ru.svg">
-          <span>Ru</span>
-        </mat-option>
-        <mat-option value="en">
-          <img class="lang-flag" src="assets/en.svg">
-          <span>En</span>
-        </mat-option>
-      </mat-select>
-    </div>
+    <button mat-icon-button class="burger-button" (click)="toggleMenu()">
+      <mat-icon>menu</mat-icon>
+    </button>
   </mat-toolbar>
+  <div class="mobile-menu-wrapper" *ngIf="isMenuOpened" (click)="toggleMenu()">
+    <div class="mobile-menu" (click)="$event.stopPropagation()">
+      <ng-container *ngTemplateOutlet="headerControls"></ng-container>
+    </div>
+  </div>
 </header>
+
+<ng-template #headerControls>
+  <form class="search-form" (submit)="$event.preventDefault()">
+    <mat-form-field>
+      <mat-label>Поиск</mat-label>
+      <input matInput [matAutocomplete]="auto" [formControl]="searchForm">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="navigateToProduct($event.option.value)">
+      <mat-option *ngFor="let option of (filteredOptions$ | async)" [value]="option">
+        {{ option.name }}
+      </mat-option>
+    </mat-autocomplete>
+  </form>
+
+  <div class="controls">
+    <mat-select
+      #authSelect
+      class="auth-select"
+      [disableOptionCentering]="true"
+      panelClass="auth-select-panel"
+      (selectionChange)="performNavigation($event.value)"
+    >
+      <mat-option value="/auth/sign-in" *ngIf="!(isAuthenticated$ | async)">
+        <span>Войти</span>
+        <mat-icon>arrow_right</mat-icon>
+      </mat-option>
+      <mat-option value="/auth/sign-up" *ngIf="!(isAuthenticated$ | async)">
+        <span>Зарегистрироваться</span>
+        <mat-icon>arrow_right</mat-icon>
+      </mat-option>
+
+      <mat-option value="/auth/profile" *ngIf="isAuthenticated$ | async">
+        <span>Профиль</span>
+        <mat-icon>arrow_right</mat-icon>
+      </mat-option>
+      <mat-option value="/auth/logout" *ngIf="isAuthenticated$ | async">
+        <span>Выйти</span>
+        <mat-icon>arrow_right</mat-icon>
+      </mat-option>
+    </mat-select>
+    <button mat-icon-button (click)="authSelect.open()">
+      <mat-icon>person</mat-icon>
+    </button>
+    <a mat-icon-button routerLink="catalog/cart" (click)="toggleMenu()">
+      <mat-icon [matBadge]="cartCount$ | async">shopping_cart</mat-icon>
+    </a>
+    <mat-select class="select-lang" [(value)]="currentLang" [disableOptionCentering]="true" panelClass="lang-select">
+      <mat-select-trigger>
+        <img class="lang-flag" [src]="'assets/' + currentLang + '.svg'">
+        <span>{{ currentLang }}</span>
+      </mat-select-trigger>
+      <mat-option value="ru">
+        <img class="lang-flag" src="assets/ru.svg">
+        <span>Ru</span>
+      </mat-option>
+      <mat-option value="en">
+        <img class="lang-flag" src="assets/en.svg">
+        <span>En</span>
+      </mat-option>
+    </mat-select>
+  </div>
+</ng-template>

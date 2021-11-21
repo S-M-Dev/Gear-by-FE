@@ -18,6 +18,7 @@ a {
 .common__list {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
   text-align: left;
 }
 
@@ -53,6 +54,7 @@ a {
 .ulSocial {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
   list-style: none;
   padding-top: 100px;
 }
