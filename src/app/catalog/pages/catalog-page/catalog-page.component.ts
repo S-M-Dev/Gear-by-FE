@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { ViewportScroller } from '@angular/common';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { MatDialog } from '@angular/material/dialog';
@@ -12,7 +12,7 @@ import { PartItem } from '../../models/parts.model';
   templateUrl: './catalog-page.component.html',
   styleUrls: ['./catalog-page.component.scss'],
 })
-export class CatalogPageComponent implements OnInit, AfterViewInit {
+export class CatalogPageComponent implements OnInit, AfterViewInit, OnDestroy {
   mobileQuery: MediaQueryList;
   opened = true;
   goodsCategories = ['Категория', 'Марка', 'Модель', 'Год выпуска'];
@@ -33,7 +33,7 @@ export class CatalogPageComponent implements OnInit, AfterViewInit {
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher
   ) {
-    this.mobileQuery = media.matchMedia('(max-width: 600px)');
+    this.mobileQuery = media.matchMedia('(max-width: 1000px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
 
@@ -47,6 +47,10 @@ export class CatalogPageComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.handleQueryParam();
     this.handleRouterState();
+  }
+
+  ngOnDestroy(): void {
+    this.mobileQuery.removeListener(this._mobileQueryListener);
   }
 
   formatLabel(value: number) {

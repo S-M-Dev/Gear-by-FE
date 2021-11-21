@@ -11,6 +11,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { CatalogRoutingModule } from './catalog-routing.module';
 import { CatalogPageComponent } from './pages/catalog-page/catalog-page.component';
@@ -38,6 +39,7 @@ const MATERIAL_MODULES = [
   MatDialogModule,
   MatDatepickerModule,
   MatMomentDateModule,
+  MatToolbarModule,
 ];
 
 @NgModule({

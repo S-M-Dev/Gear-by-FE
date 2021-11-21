@@ -1,4 +1,7 @@
 <section>
+  <mat-toolbar class="cart-toolbar">
+    <button type="button" mat-icon-button (click)="orderForm.toggle()"><mat-icon>menu</mat-icon></button>
+  </mat-toolbar>
   <form [formGroup]="cartForm" (submit)="cartForm.valid && submitOrder()">
     <mat-drawer-container>
       <mat-drawer-content>
@@ -18,7 +21,7 @@
           </gear-by-cart-item>
         </ng-container>
       </mat-drawer-content>
-      <mat-drawer position="end" mode="side" opened>
+      <mat-drawer position="end" #orderForm [mode]="mobileQuery.matches ? 'over' : 'side'" [opened]="!mobileQuery.matches">
         <mat-card class="cart-total">
           <div class="cart-total__title">
             <h3>Итого</h3>

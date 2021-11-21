@@ -1,6 +1,16 @@
 .goods-list {
   background: white;
 
+  .filter-toolbar {
+    display: none;
+  }
+
+  @media (max-width: 1000px) {
+    .filter-toolbar {
+      display: flex;
+    }
+  }
+
   mat-drawer {
     width: 277px;
     padding: 20px;
@@ -128,6 +138,27 @@
         text-decoration: underline;
         font-weight: 300;
         margin-right: 69px;
+      }
+    }
+  }
+
+  @media (max-width: 1300px) {
+    .goods-list__header {
+      flex-direction: column;
+      align-items: center;
+
+      &__sort {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &__title {
+            margin-right: 0;
+        }
+
+        button {
+          padding: 0;
+        }
       }
     }
   }

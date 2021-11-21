@@ -7,19 +7,21 @@
       <span>Модель: {{ item.carModel }}</span>
     </div>
   </div>
-  <div class="cart-item__counter">
-    <button type="button" mat-icon-button (click)="decreaseCount()">
-      <mat-icon>remove</mat-icon>
-    </button>
-    <span>{{ formGroup.get('amount')?.value || 1 }}</span>
-    <button type="button" mat-icon-button (click)="increaseCount()">
-      <mat-icon>add</mat-icon>
+  <div class="cart-item__controls">
+    <div class="cart-item__counter">
+      <button type="button" mat-icon-button (click)="decreaseCount()">
+        <mat-icon>remove</mat-icon>
+      </button>
+      <span>{{ formGroup.get('amount')?.value || 1 }}</span>
+      <button type="button" mat-icon-button (click)="increaseCount()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <div class="cart-item__price">
+      {{ item.price }}р.
+    </div>
+    <button type="button" mat-icon-button class="cart-item__delete" (click)="onRemoveFromCart()">
+      <mat-icon>close</mat-icon>
     </button>
   </div>
-  <div class="cart-item__price">
-    {{ item.price }}р.
-  </div>
-  <button type="button" mat-icon-button class="cart-item__delete" (click)="onRemoveFromCart()">
-    <mat-icon>close</mat-icon>
-  </button>
 </mat-card>

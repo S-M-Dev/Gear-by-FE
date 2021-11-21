@@ -1,3 +1,14 @@
+.cart-toolbar {
+  display: none;
+}
+
+@media (max-width: 1500px) {
+  .cart-toolbar {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+}
+
 mat-drawer {
   width: 485px;
   border-left: 3px solid #FF0000 !important;
@@ -77,6 +88,12 @@ mat-drawer {
   }
 }
 
+@media (max-width: 500px) {
+  mat-drawer {
+    width: 100%;
+  }
+}
+
 mat-drawer-content {
   padding: 68px 70px 29px 57px;
   min-height: 600px;
@@ -88,5 +105,11 @@ mat-drawer-content {
   .cart-empty {
     font-size: 27px;
     margin-top: 40px;
+  }
+}
+
+@media (max-width: 1500px) {
+  mat-drawer-content {
+    padding: 20px;
   }
 }

@@ -36,7 +36,16 @@
     }
   }
 
+  &__controls {
+    display: flex;
+    align-items: flex-start;
+  }
+
   &__counter {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+
     & > * {
       margin: 0 15px;
     }
@@ -51,5 +60,26 @@
 
   &__delete {
     color:rgba(249, 25, 25, 0.94)
+  }
+}
+
+@media (max-width: 1100px) {
+  .cart-item {
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 450px) {
+  .cart-item {
+    &__controls {
+      flex-direction: column-reverse;
+      justify-content: flex-end;
+      align-items: flex-end;
+    }
+
+    &__image {
+      width: 100%;
+    }
   }
 }

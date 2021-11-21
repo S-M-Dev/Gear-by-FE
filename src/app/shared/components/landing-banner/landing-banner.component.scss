@@ -58,6 +58,10 @@
       font-size: 40px;
     }
 
+    &__left {
+      width: unset;
+    }
+
     &__right {
       img {
         max-width: 600px;

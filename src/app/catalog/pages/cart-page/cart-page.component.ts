@@ -1,11 +1,12 @@
 import { Observable, Subject, Subscription } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CartService } from './../../../core/services/cart.service';
 import { PartItem } from '../../models/parts.model';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { takeUntil, tap } from 'rxjs/operators';
 import { OrderService } from '../../services/order.service';
 import { Router } from '@angular/router';
+import { MediaMatcher } from '@angular/cdk/layout';
 
 @Component({
   selector: 'gear-by-cart-page',
@@ -19,15 +20,24 @@ export class CartPageComponent implements OnInit {
   totalPrice = 0;
   totalAmount = 0;
 
+  mobileQuery: MediaQueryList;
+
   private unsubscribeValueChanges$ = new Subject();
   private cartItems: PartItem[];
+  private _mobileQueryListener: () => void;
 
   constructor(
     private cartService: CartService,
     private orderService: OrderService,
     private fb: FormBuilder,
-    private router: Router
-  ) {}
+    private router: Router,
+    changeDetectorRef: ChangeDetectorRef,
+    media: MediaMatcher
+  ) {
+    this.mobileQuery = media.matchMedia('(max-width: 1500px)');
+    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+    this.mobileQuery.addListener(this._mobileQueryListener);
+  }
 
   ngOnInit(): void {
     this.cartForm = this.fb.group({
