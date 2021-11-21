@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, of, ReplaySubject, Subject } from 'rxjs';
-import { tap, switchMapTo, concatMapTo, map, skipUntil, delayWhen } from 'rxjs/operators';
+import { BehaviorSubject, of, ReplaySubject } from 'rxjs';
+import { tap, skipUntil } from 'rxjs/operators';
 import { User } from '../models/user.model';
 
 @Injectable({
@@ -32,6 +32,10 @@ export class UserInfoService {
     return this.userInfo$.pipe(
       skipUntil(this.loadingFinished$)
     );
+  }
+
+  setUserInfo(user: User) {
+    this.userInfo$.next(user);
   }
 
   setToken(token: string) {

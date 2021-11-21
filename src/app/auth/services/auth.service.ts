@@ -1,7 +1,7 @@
 import { UserInfoService } from './../../core/services/user-info.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, tap } from 'rxjs/operators';
 
 import { SignInPayload, SignUpPayload, AuthResponse } from './../models/auth.model';
 import { User } from 'src/app/core/models/user.model';
@@ -26,7 +26,9 @@ export class AuthService {
 
   editUser(payload: User) {
     return this.http.put<User>(this.apiUrl, payload).pipe(
-      switchMap(() => this.userInfoService.fetchUserInfo())
+      tap((user) => {
+        this.userInfoService.setUserInfo(user);
+      })
     )
   }
 
