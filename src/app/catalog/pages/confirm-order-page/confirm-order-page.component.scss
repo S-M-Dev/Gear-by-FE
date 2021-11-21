@@ -81,6 +81,28 @@ section {
     }
   }
 
+  @media (max-width: 1100px) {
+    .order-card {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      &__image {
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  @media (max-width: 550px) {
+    .order-card {
+      width: 100%;
+
+      &__image {
+        width: 100%;
+      }
+    }
+  }
+
   a {
     margin-top: 83px;
     background: #e70f0f;
@@ -90,5 +112,18 @@ section {
     font-size: 35px;
     font-weight: normal;
     padding: 8px;
+  }
+
+  @media (max-width: 550px) {
+    a {
+      width: 100%;
+      font-size: 25px;
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  section {
+    padding: 20px;
   }
 }
