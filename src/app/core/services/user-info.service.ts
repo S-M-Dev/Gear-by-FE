@@ -18,6 +18,7 @@ export class UserInfoService {
     if (this.getToken()) {
       return this.http.get<User>(this.apiUrl).pipe(
         tap((userInfo) => {
+          this.loadingFinished$.next();
           this.userInfo$.next(userInfo);
         }),
         finalize(() => {
