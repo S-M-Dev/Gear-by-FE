@@ -6,6 +6,7 @@ import { ItemModalComponent } from '../../components/item-modal/item-modal.compo
 import { UserInfoService } from './../../../core/services/user-info.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PartItem } from '../../models/parts.model';
+import { CatalogFilter } from '../../models/catalog.model';
 
 @Component({
   selector: 'gear-by-catalog-page',
@@ -15,7 +16,62 @@ import { PartItem } from '../../models/parts.model';
 export class CatalogPageComponent implements OnInit, AfterViewInit, OnDestroy {
   mobileQuery: MediaQueryList;
   opened = true;
-  goodsCategories = ['Категория', 'Марка', 'Модель', 'Год выпуска'];
+  categories: CatalogFilter[] = [
+    {
+      name: 'Категория',
+      facets: [
+        'Автохимия',
+        'Аккумуляторы',
+        'Тормоза',
+        'Двигатель',
+        'Подвеска',
+        'Рулевое',
+        'Коробка передач',
+        'Охлаждение',
+        'Электрика',
+        'Кузов и элементы',
+        'ТО и фильтра',
+      ]
+    },
+    {
+      name: 'Марка',
+      facets: [
+        'Audi',
+        'Mazda',
+        'Kia',
+        'Ford',
+        'BMW',
+        'Citroen',
+        'Honda',
+        'Hyundai',
+        'Skoda',
+        'Volkswagen',
+      ]
+    },
+    {
+      name: 'Модель',
+      facets: [
+        '1',
+        '2',
+        '3',
+        '4',
+        '5',
+      ]
+    },
+    {
+      name: 'Год выпуска',
+      facets: [
+        '2008',
+        '2009',
+        '2010',
+        '2011',
+        '2012',
+        '2013',
+        '2014',
+        '2015',
+      ]
+    }
+  ]
   array = Array(20).fill(0);
 
   user$ = this.userInfoService.getUserInfo();
