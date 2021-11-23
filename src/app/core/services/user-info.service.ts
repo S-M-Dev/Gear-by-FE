@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, of, ReplaySubject } from 'rxjs';
-import { tap, skipUntil } from 'rxjs/operators';
+import { tap, skipUntil, finalize } from 'rxjs/operators';
 import { User } from '../models/user.model';
 
 @Injectable({
@@ -18,8 +18,10 @@ export class UserInfoService {
     if (this.getToken()) {
       return this.http.get<User>(this.apiUrl).pipe(
         tap((userInfo) => {
-          this.loadingFinished$.next();
           this.userInfo$.next(userInfo);
+        }),
+        finalize(() => {
+          this.loadingFinished$.next();
         })
       );
     }

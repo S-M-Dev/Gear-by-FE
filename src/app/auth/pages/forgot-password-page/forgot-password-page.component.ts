@@ -64,7 +64,7 @@ export class ForgotPasswordPageComponent {
     const passwordConfirmation = this.newPasswordForm.value.confirmPassword;
 
     if (password !== passwordConfirmation) {
-      this.snackbar.open('Пароли не совпадают');
+      this.snackbar.open('Пароли не совпадают', 'Закрыть', { duration: 3000 });
     } else {
       this.authService.resetPassword(this.userId, password)
         .subscribe(() => {

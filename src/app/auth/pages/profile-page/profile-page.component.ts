@@ -36,7 +36,7 @@ export class ProfilePageComponent implements OnInit {
   editUser(): void {
     const newUser = this.userInfoForm.value;
     this.authService.editUser(newUser).subscribe(() => {
-      this.snackbar.open('Данные успешно изменены');
+      this.snackbar.open('Данные успешно изменены', 'Закрыть', { duration: 3000 });
     });
   }
 }
