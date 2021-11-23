@@ -4,6 +4,8 @@
   border-radius: 10px;
   padding: 53px 39px;
   max-width: 1338px;
+  max-height: 100vh;
+  overflow: auto;
 }
 
 .item-modal {
@@ -27,6 +29,7 @@
     margin-top: 71px;
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
 
     & > * {
       padding: 30px 20px;
@@ -95,6 +98,14 @@
     article {
       font-size: 40px;
       line-height: 47px;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .item-modal__content__current_image {
+    img {
+      width: 100%;
     }
   }
 }
