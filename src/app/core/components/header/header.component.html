@@ -42,7 +42,7 @@
       class="auth-select"
       [disableOptionCentering]="true"
       panelClass="auth-select-panel"
-      (selectionChange)="performNavigation($event.value)"
+      (selectionChange)="performNavigation($event.value); authSelect.value = null"
     >
       <mat-option value="/auth/sign-in" *ngIf="!(isAuthenticated$ | async)">
         <span>Войти</span>
