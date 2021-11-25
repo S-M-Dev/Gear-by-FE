@@ -32,8 +32,8 @@ export class AuthService {
     )
   }
 
-  resetPassword(userId: string, password: string) {
-    return this.http.patch<AuthResponse>(`${this.apiUrl}/${userId}`, { password }).pipe(
+  resetPassword(id: string, password: string) {
+    return this.http.patch<AuthResponse>(this.apiUrl, { password, id }).pipe(
       switchMap((response) => this.handleAuthPostStep(response))
     );
   }
