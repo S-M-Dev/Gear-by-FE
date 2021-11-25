@@ -1,12 +1,14 @@
+import { UserInfoService } from './../../../core/services/user-info.service';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CartService } from './../../../core/services/cart.service';
 import { PartItem } from '../../models/parts.model';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { takeUntil, tap } from 'rxjs/operators';
+import { filter, switchMap, take, takeUntil, tap } from 'rxjs/operators';
 import { OrderService } from '../../services/order.service';
 import { Router } from '@angular/router';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'gear-by-cart-page',
@@ -29,8 +31,10 @@ export class CartPageComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private orderService: OrderService,
+    private userInfoService: UserInfoService,
     private fb: FormBuilder,
     private router: Router,
+    private snackbar: MatSnackBar,
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher
   ) {
@@ -88,7 +92,17 @@ export class CartPageComponent implements OnInit {
   }
 
   submitOrder() {
-    this.orderService.submitOrder(this.cartForm.value).subscribe((order) => {
+    this.userInfoService.getUserInfo().pipe(
+      take(1),
+      filter((user) => {
+        if (!user?.address) {
+          this.snackbar.open('Пожалуйста заполните адрес в профиле', 'Закрыть', { duration: 3000 });
+        }
+
+        return !!user?.address
+      }),
+      switchMap(() => this.orderService.submitOrder(this.cartForm.value))
+    ).subscribe((order) => {
       this.router.navigate(['/catalog/confirm-order'], { state: { order, cart: this.cartItems } });
       this.cartService.clearCart();
     });
