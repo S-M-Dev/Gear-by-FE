@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://gear-by-be.herokuapp.com/api',
+  apiUrl: 'https://server.smdevsoft.com/gear/api',
   firebase: {
     apiKey: 'AIzaSyC365OqBIxPcO4b0rTOyhkbwAAO2P9U28E',
     authDomain: 'gear-by.firebaseapp.com',

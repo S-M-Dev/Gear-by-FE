@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "https://gear-by-be.herokuapp.com/",
+    "target": "https://server.smdevsoft.com/gear/",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug"
