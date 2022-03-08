@@ -1,4 +1,4 @@
-import { PartsService } from './../services/parts.service';
+import { PartsService } from '../../core/services/parts.service';
 import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
 import { PartItem } from '../models/parts.model';

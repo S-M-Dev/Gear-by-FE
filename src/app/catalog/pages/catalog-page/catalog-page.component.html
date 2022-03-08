@@ -19,33 +19,28 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
         <div class="filter-content">
-          <button class="filter-content__item" mat-button *ngFor="let item of category.facets">
+          <button class="filter-content__item"
+                  mat-button
+                  *ngFor="let item of category.facets" (click)="applyCategory(category, item)"
+          >
             <span class="filter-content__item__name">
-              <span>{{ item }}</span>
+              <span>{{ item.name }}</span>
               <mat-icon>arrow_right</mat-icon>
             </span>
           </button>
         </div>
       </mat-expansion-panel>
-
-      <mat-card class="filter-header">Цена</mat-card>
-
-      <mat-slider
-        thumbLabel
-        [displayWith]="formatLabel"
-        tickInterval="50"
-        step="100"
-        max="100000"
-        aria-label="units">
-      </mat-slider>
     </mat-drawer>
     <mat-drawer-content>
       <div class="goods-list__header">
         <h2>Наш товар</h2>
         <div class="goods-list__header__sort">
           <span class="goods-list__header__sort__title">Сортировка по:</span>
-          <button mat-button>Популярности</button>
-          <button mat-button>Цене</button>
+          <button mat-button (click)="toggleSortOrder()">
+            <span>Цене</span>
+            <mat-icon *ngIf="currentSortOrder === sortOrder.Asc">keyboard_arrow_up</mat-icon>
+            <mat-icon *ngIf="currentSortOrder === sortOrder.Desc">keyboard_arrow_down</mat-icon>
+          </button>
         </div>
       </div>
       <div class="goods-list__results">

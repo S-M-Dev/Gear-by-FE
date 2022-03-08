@@ -6,7 +6,9 @@ import { ItemModalComponent } from '../../components/item-modal/item-modal.compo
 import { UserInfoService } from './../../../core/services/user-info.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PartItem } from '../../models/parts.model';
-import { CatalogFilter } from '../../models/catalog.model';
+import { CatalogFilter, Facet } from '../../models/catalog.model';
+import { SortOrder } from '../../../core/models/sort.model';
+import { PartsService } from '../../../core/services/parts.service';
 
 @Component({
   selector: 'gear-by-catalog-page',
@@ -16,66 +18,14 @@ import { CatalogFilter } from '../../models/catalog.model';
 export class CatalogPageComponent implements OnInit, AfterViewInit, OnDestroy {
   mobileQuery: MediaQueryList;
   opened = true;
-  categories: CatalogFilter[] = [
-    {
-      name: 'Категория',
-      facets: [
-        'Автохимия',
-        'Аккумуляторы',
-        'Тормоза',
-        'Двигатель',
-        'Подвеска',
-        'Рулевое',
-        'Коробка передач',
-        'Охлаждение',
-        'Электрика',
-        'Кузов и элементы',
-        'ТО и фильтра',
-      ]
-    },
-    {
-      name: 'Марка',
-      facets: [
-        'Audi',
-        'Mazda',
-        'Kia',
-        'Ford',
-        'BMW',
-        'Citroen',
-        'Honda',
-        'Hyundai',
-        'Skoda',
-        'Volkswagen',
-      ]
-    },
-    {
-      name: 'Модель',
-      facets: [
-        '1',
-        '2',
-        '3',
-        '4',
-        '5',
-      ]
-    },
-    {
-      name: 'Год выпуска',
-      facets: [
-        '2008',
-        '2009',
-        '2010',
-        '2011',
-        '2012',
-        '2013',
-        '2014',
-        '2015',
-      ]
-    }
-  ]
+  categories: CatalogFilter[] = [];
   array = Array(20).fill(0);
 
   user$ = this.userInfoService.getUserInfo();
   items: PartItem[];
+
+  currentSortOrder: SortOrder | null;
+  sortOrder = SortOrder;
 
   private _mobileQueryListener: () => void;
   private shouldScrollToGoods: boolean;
@@ -84,13 +34,14 @@ export class CatalogPageComponent implements OnInit, AfterViewInit, OnDestroy {
     private scroller: ViewportScroller,
     private dialog: MatDialog,
     private userInfoService: UserInfoService,
+    private partsService: PartsService,
     private route: ActivatedRoute,
     private router: Router,
-    changeDetectorRef: ChangeDetectorRef,
-    media: MediaMatcher
+    private changeDetectorRef: ChangeDetectorRef,
+    private media: MediaMatcher
   ) {
-    this.mobileQuery = media.matchMedia('(max-width: 1000px)');
-    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+    this.mobileQuery = this.media.matchMedia('(max-width: 1000px)');
+    this._mobileQueryListener = () => this.changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
 
     const navigation = this.router.getCurrentNavigation();
@@ -98,6 +49,7 @@ export class CatalogPageComponent implements OnInit, AfterViewInit, OnDestroy {
   }
   ngOnInit(): void {
     this.items = this.route.snapshot.data.items;
+    this.categories = this.partsService.getCategories();
   }
 
   ngAfterViewInit(): void {
@@ -125,11 +77,31 @@ export class CatalogPageComponent implements OnInit, AfterViewInit, OnDestroy {
     const dialogRef = this.dialog.open(ItemModalComponent, { data: item });
   }
 
+  toggleSortOrder() {
+    if (!this.currentSortOrder) {
+      this.currentSortOrder = SortOrder.Asc;
+    } else if (this.currentSortOrder === SortOrder.Asc){
+      this.currentSortOrder = SortOrder.Desc;
+    } else if (this.currentSortOrder === SortOrder.Desc) {
+      this.currentSortOrder = null;
+    }
+
+    this.items = this.partsService.sortItems(this.currentSortOrder);
+  }
+
+  applyCategory(filter: CatalogFilter, facet: Facet) {
+    this.categories = this.partsService.getCategories(filter, facet);
+    this.items = this.partsService.filterItems(filter, facet);
+  }
+
   private handleQueryParam(): void {
     this.route.queryParams.subscribe(() => {
       const partId = this.route.snapshot.queryParams.id;
 
       if (partId) {
+        this.categories = this.partsService.getCategories();
+        this.items = this.partsService.getLocalItems();
+
         const part = this.items.find((item) => item.id === +partId);
         setTimeout(() => this.scrollToGoods(), 0);
         setTimeout(() => this.openItemModal(part as PartItem), 1000);

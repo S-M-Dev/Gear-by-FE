@@ -6,7 +6,7 @@ import { map, debounceTime, switchMap } from 'rxjs/operators';
 import { combineLatest, Observable } from 'rxjs';
 import { PartItem } from 'src/app/catalog/models/parts.model';
 import { CartService } from '../../services/cart.service';
-import { SearchService } from '../../services/search.service';
+import { PartsService } from '../../services/parts.service';
 
 @Component({
   selector: 'gear-by-header',
@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
   isMenuOpened: boolean;
 
   constructor(
-    private searchService: SearchService,
+    private partsService: PartsService,
     private cartService: CartService,
     private userInfoService: UserInfoService,
     private router: Router,
@@ -45,7 +45,7 @@ export class HeaderComponent implements OnInit {
     );
     this.filteredOptions$ = this.searchForm.valueChanges.pipe(
       debounceTime(300),
-      switchMap((value) => this.searchService.performGlobalSearch(value))
+      map((value) => this.partsService.searchItems(value))
     );
   }
 

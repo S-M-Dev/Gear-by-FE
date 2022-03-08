@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { PartsService } from '../../services/parts.service';
+import { PartsService } from '../../../core/services/parts.service';
 
 @Component({
   selector: 'gear-by-add-item-page',
