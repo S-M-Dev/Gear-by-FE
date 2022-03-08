@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AmountUpdatePayload, PartItem } from '../../catalog/models/parts.model';
-import { tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { SortOrder } from '../models/sort.model';
 import { CatalogFilter, Facet } from '../../catalog/models/catalog.model';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -62,11 +63,15 @@ export class PartsService {
   }
 
   searchItems(term: string) {
-    return this.items.filter(item => [
-      item.name.toLowerCase(),
-      item.carMark.toLowerCase(),
-      item.carModel.toLowerCase(),
-    ].some(name => name.includes(term.toLowerCase())));
+    const obs = this.items ? of(this.items) : this.getItems()
+
+    return obs.pipe(
+      map(items => items.filter(item => [
+        item.name.toLowerCase(),
+        item.carMark.toLowerCase(),
+        item.carModel.toLowerCase(),
+      ].some(name => name.includes(term.toLowerCase()))))
+    )
   }
 
   sortItems(sortOrder: SortOrder | null) {

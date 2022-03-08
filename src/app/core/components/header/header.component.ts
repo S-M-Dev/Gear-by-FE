@@ -2,7 +2,7 @@ import { UserInfoService } from './../../services/user-info.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { map, debounceTime, switchMap } from 'rxjs/operators';
+import { map, debounceTime, switchMap, switchMapTo, filter } from 'rxjs/operators';
 import { combineLatest, Observable } from 'rxjs';
 import { PartItem } from 'src/app/catalog/models/parts.model';
 import { CartService } from '../../services/cart.service';
@@ -45,7 +45,10 @@ export class HeaderComponent implements OnInit {
     );
     this.filteredOptions$ = this.searchForm.valueChanges.pipe(
       debounceTime(300),
-      map((value) => this.partsService.searchItems(value))
+      switchMap(value => this.isAuthenticated$.pipe(
+        filter(Boolean),
+        switchMapTo(this.partsService.searchItems(value))
+      )),
     );
   }
 
